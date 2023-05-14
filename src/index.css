@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Cascadia Code';
+    src: './assets/fonts/CascadiaCodePL.ttf';
+    display: swap
+}
+
+@font-face {
+    font-family: 'Cascadia Code';
+    font-style: italic;
+    src: './assets/fonts/CascadiaCodePL.ttf';
+    display: swap;
+}
+
+html {
+    scroll-behavior: smooth;
+}
