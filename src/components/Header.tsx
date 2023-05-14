@@ -1,11 +1,16 @@
-import { Link } from "react-router-dom";
-import { Icon } from "@iconify/react";
-import { useEffect, useState } from "react";
-import { supabase } from "../supabaseClient";
-import GZOIcon from '../assets/images/icon.png'
+import { Link } from 'react-router-dom';
+import { Icon } from '@iconify/react';
+import { useEffect, useState } from 'react';
+import { supabase } from '../supabaseClient';
+import GZOIcon from '../assets/images/icon.png';
 
-function Header() {
+interface HeaderProps {
+    url?: string;
+}
+
+const Header: React.FC<HeaderProps> = ({url}) => {
     const [session, setSession] = useState(null);
+    const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
 
     useEffect(() => {
         supabase.auth.getSession().then(({ data: { session } }) => {
@@ -18,15 +23,49 @@ function Header() {
         // console.log("Header Session", session)
     }, []);
 
+    useEffect(() => {
+        if (url) downloadImage(url);
+
+    }, [url]);
+
+    async function downloadImage(path: string) {
+        try {
+            const { data, error } = await supabase.storage.from("avatars").download(path);
+            if (error) {
+                throw error;
+            }
+            const url = URL.createObjectURL(data);
+            setAvatarUrl(url);
+        } catch (error: any) {
+            console.log("Error downloading image: ", error.message);
+        }
+    }
+
+    // useEffect(() => {
+    //     async function getUserAvatar() {
+    //         let { data: profiles, error } = await supabase.from('profiles').select('avatar_url');
+
+    //         if (error) {
+    //             console.log(error);
+    //         } else {
+    //             if (profiles && profiles.length > 0) {
+    //                 setAvatarUrl(profiles[0].avatar_url);
+    //             }
+    //         }
+    //     }
+
+    //     getUserAvatar();
+    // }, []);
+
     return (
-        <header className="navbar h-24 sticky top-0 bg-base-200 flex justify-center items-center p-5 z-[999]">
+        <header className="navbar sticky top-0 z-[999] flex h-24 items-center justify-center bg-base-200 p-5">
             <div className="w-3/4">
                 <div className="flex-1">
                     <Link to="/">
-                        <img src={GZOIcon} width="50px" height="50px" className="rounded"/>
+                        <img src={GZOIcon} width="50px" height="50px" className="rounded" />
                     </Link>
                 </div>
-                <div className="flex gap-5 items-center">
+                <div className="flex items-center gap-5">
                     <ul className="menu menu-horizontal px-1 font-mono uppercase">
                         <li>
                             <Link to="/jobs">Jobs</Link>
@@ -62,17 +101,24 @@ function Header() {
                             <a>Contact</a>
                         </li>
                     </ul>
-                    {!session ? 
-                    <Link to="/profile">
-                        <Icon icon="pixelarticons:human-handsdown" width="33" height="33" className="mr-5" />
+                    {!session ? (
+                        <Link to="/profile">
+                            <Icon icon="pixelarticons:human-handsdown" width="33" height="33" className="mr-5" />
+                        </Link>
+                    ) : (
+                        <Link to="/profile">
+                            <img
+                                src={avatarUrl}
+                                width={33}
+                                height="33"
+                                className="mr-5 rounded-full border border-primary"
+                            />
+                            {/* <Icon icon="pixelarticons:human-handsup" width="33" height="33" className="mr-5" /> */}
+                        </Link>
+                    )}
+                    <Link to="/post" className="btn font-mono">
+                        Post a Job
                     </Link>
-                    : 
-                    <Link to="/profile">
-                        <img src={session.user.user_metadata.avatar_url} width={33} height="33" className="rounded-full border mr-5 border-primary"/>
-                        {/* <Icon icon="pixelarticons:human-handsup" width="33" height="33" className="mr-5" /> */}
-                    </Link>
-                    }
-                    <Link to="/post" className="btn font-mono">Post a Job</Link>
                 </div>
             </div>
         </header>

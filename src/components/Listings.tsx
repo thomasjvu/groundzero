@@ -9,21 +9,29 @@ const Listings: React.FC = () => {
     // if the listings database changes, refetch our listings
     useEffect(() => {
         fetchListings();
-    }, [listings]);
+    }, []);
 
     // get the latest listings
     async function fetchListings() {
+
         const { data, error } = await supabase.from("listings").select().order("created_at", { ascending: false }).range(0, 9)
+
         if (error) {
             console.error("Error fetching listings:", error)
+            return;
         }
-        setListings(data);
-        console.log("Listings Data: ", data);
+
+        if (data) {
+            setListings(data)
+        }
+
+        // console.log("Listings:", data)
     }
+
 
     return (
         <div className="latest-listings w-full flex flex-col gap-5">
-            {listings.map((listing) => (
+            {listings && listings.map((listing) => (
                 <Link to={`/jobs/${listing.id}`} key={listing.id}>
                     <div className="bg-transparent border rounded-xl p-10">
                         <h3 className="font-mono text-xl font-bold">{listing.title}</h3>

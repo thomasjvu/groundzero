@@ -12,17 +12,16 @@ type SessionType = {
     user: {
         id: string;
         email: string;
-        user_metadata: {
-        user_name: string;
-        }
     }
 }
-const Account: React.FC<{session: SessionType}> = ({ session }) => { // specify type of props as an object with a single property `sesssion` of type `SessionType`
+const Account: React.FC<{session: SessionType}> = ({ session }) => { // specify type of React FC props as an object with a single property `session` of type `SessionType`
     const [loading, setLoading] = useState(true);
     const [username, setUsername] = useState("");
     const [website, setWebsite] = useState("");
     const [currency, setCurrency] = useState("");
     const [avatar_url, setAvatarUrl] = useState(null);
+
+    console.log("Profile Session", session)
 
     useEffect(() => {
         async function getProfile() {
@@ -48,7 +47,6 @@ const Account: React.FC<{session: SessionType}> = ({ session }) => { // specify 
         }
         getProfile();
 
-        console.log("Profile Session", session)
     }, [session]);
 
     async function updateProfile(e: any) {
@@ -77,7 +75,7 @@ const Account: React.FC<{session: SessionType}> = ({ session }) => { // specify 
     return (
         <div className="flex flex-col items-center justify-center gap-10">
             {/* Greet User */}
-            <div className='font-mono'>{greetUser()} {session.user.user_metadata.user_name}</div>
+            <div className='font-mono'>{greetUser()}, @{username}</div>
             {/* Account Settings */}
             <h2 className="font-display text-4xl">Account Settings</h2>
             <form onSubmit={updateProfile} className="flex w-1/4 flex-col gap-5 font-mono">
