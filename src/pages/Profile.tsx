@@ -3,9 +3,10 @@ import { supabase } from "../supabaseClient";
 import Layout from "../layouts/Layout";
 import Auth from "../components/Auth";
 import Account from "../components/Account"
+import { Session } from "@supabase/supabase-js";
 
 const Profile: React.FC = () => {
-    const [session, setSession] = useState(null);
+    const [session, setSession] = useState<Session | null>(null);
 
     useEffect(() => {
         supabase.auth.getSession().then(({ data: { session } }) => {

@@ -1,20 +1,15 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../supabaseClient';
-
+import { Session } from '@supabase/supabase-js';
 import { currencyList } from '../types/currency'
 
 import Avatar from './Avatar';
-// import Button from "./Button";
+import AvatarUpload from './AvatarUpload';
 import ButtonSignout from '../components/ButtonSignout';
 import { greetUser } from '../utils/time';
 
-type SessionType = {
-    user: {
-        id: string;
-        email: string;
-    }
-}
-const Account: React.FC<{session: SessionType}> = ({ session }) => { // specify type of React FC props as an object with a single property `session` of type `SessionType`
+const Account: React.FC<{session: Session}> = ({ session }) => { 
+// specify type of React FC props as an object with a single property `session` of type `Session`
     const [loading, setLoading] = useState(true);
     const [username, setUsername] = useState("");
     const [website, setWebsite] = useState("");
@@ -80,8 +75,10 @@ const Account: React.FC<{session: SessionType}> = ({ session }) => { // specify 
             <h2 className="font-display text-4xl">Account Settings</h2>
             <form onSubmit={updateProfile} className="flex w-1/4 flex-col gap-5 font-mono">
                 <Avatar
-                    url={avatar_url}
+                    url={avatar_url ?? ''}
                     size={150}
+                />
+                <AvatarUpload 
                     onUpload={(event: any, url: any) => {
                         setAvatarUrl(url);
                         updateProfile(event);

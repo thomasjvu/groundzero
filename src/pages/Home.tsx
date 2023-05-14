@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../supabaseClient";
-// import {HeroImage} from "../assets/images/aesthetic-anime-girl.png"
+import CyberpunkGirl from "../assets/images/aesthetic-cyberpunk-girl.png"
+import SniperGirl from "../assets/images/aesthetic-sniper-girl.png"
 
 import Layout from "../layouts/Layout";
-import Companies from "../components/Companies";
-// import CardOverlay from "../components/Cards/CardOverlay";
+import CompaniesGrid from "../components/CompaniesGrid";
 import GlassCard from "../components/GlassCard";
 import HeroOverlay from "../components/HeroOverlay";
-// import Auth from "../components/Auth";
-// import Account from "../components/Account";
 import Listings from "../components/Listings";
 import ListingsForm from "../components/ListingsForm";
 import SponsorsCardOverlay from "../components/Sponsors/SponsorsCardOverlay"
 
+import { Session } from "@supabase/supabase-js";
+
 const Home: React.FC = () => {
-    const [session, setSession] = useState<any>("");
+    const [session, setSession] = useState<Session | null>(null);
 
     useEffect(() => {
         supabase.auth.getSession().then(({ data: { session } }) => {
@@ -30,13 +30,13 @@ const Home: React.FC = () => {
         <Layout>
             <div id="container-home" className="flex flex-col gap-10">
                 <HeroOverlay
-                    image="https://res.cloudinary.com/dlcz9y0nv/image/upload/v1683836877/gzo/aesthetic-anime-girl_transparent_j1dfyi.png"
+                    image={CyberpunkGirl}
                     title="Prepare for your gaming career at Ground Zero"
                     text="Ground Zero is the best place to start your gaming career"
                     primaryButtonText="Hire Talent"
                     secondaryButtonText="Find a job"
                 />
-                <Companies />
+                <CompaniesGrid />
                 <div id="container-listings" className="grow-1 flex gap-20 font-display text-3xl relative">
                     <section className="flex grow flex-col gap-5">
                         <h3 className="font-display text-3xl">Latest Opportunities</h3>
@@ -48,15 +48,16 @@ const Home: React.FC = () => {
                         <div className="sticky top-28 flex flex-col gap-5 mt-8">
                             {session && session.user.user_metadata.company === null ?
                                 <GlassCard
-                                    src="https://res.cloudinary.com/dlcz9y0nv/image/upload/v1683836877/gzo/aesthetic-anime-girl_transparent_j1dfyi.png"
+                                    src={SniperGirl}
                                     alt="Image of Video Game"
                                     title="Post a Job"
                                     text="Reach thousands of industry professionals and hire alongside the most famous brands in gaming and esports."
-                                    button="Get Started"
+                                    buttonText="Get Started"
+                                    buttonLink="/post"
                                 />
                                 :
                                 <GlassCard
-                                    src="https://res.cloudinary.com/dlcz9y0nv/image/upload/v1683850603/gzo/aesthetic-sniper-girl_g5ejhq.png"
+                                    src={SniperGirl}
                                     alt="Image of Video Game"
                                     title="Aim For Your Next Job"
                                     text="Search through our listings to find the job that suits you."

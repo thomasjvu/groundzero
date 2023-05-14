@@ -3,13 +3,7 @@ import { supabase } from "../supabaseClient";
 import LoginButtonsDiscord from "./LoginButtons/Discord";
 import LoginButtonsGitHub from "./LoginButtons/GitHub";
 
-interface SignInWithOtpCredentials {
-    email: string;
-    redirectTo?: string;
-    company: boolean
-}
-
-export default function Auth() {
+const Auth: React.FC = () => {
     const [loading, setLoading] = useState(false)
     const [email, setEmail] = useState('')
 
@@ -17,7 +11,7 @@ export default function Auth() {
         e.preventDefault()
 
         setLoading(true)
-        const { data, error } = await supabase.auth.signInWithOtp({ email, company: true, redirectTo: '/profile' } as SignInWithOtpCredentials)
+        const { data, error } = await supabase.auth.signInWithOtp({ email })
 
         if (error) {
             alert(error.message)
@@ -50,3 +44,5 @@ export default function Auth() {
         </div>
     )
 }
+
+export default Auth

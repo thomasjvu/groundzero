@@ -7,6 +7,7 @@ type LayoutProps = {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
+
     return (
         <div className="min-h-screen">
             <div className="flex flex-col justify-center items-center gap-20">

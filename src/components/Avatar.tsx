@@ -5,12 +5,10 @@ import defaultAvatar from '../assets/images/icon.png';
 interface AvatarProps {
     url?: string;
     size?: number;
-    onUpload?: (event: any, filePath: string) => void;
 }
 
-const Avatar: React.FC<AvatarProps> = ({ url, size, onUpload }) => {
+const Avatar: React.FC<AvatarProps> = ({ url, size }) => {
     const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
-    const [uploading, setUploading] = useState(false);
 
     useEffect(() => {
         if (url) downloadImage(url);
@@ -26,35 +24,6 @@ const Avatar: React.FC<AvatarProps> = ({ url, size, onUpload }) => {
             setAvatarUrl(url);
         } catch (error: any) {
             console.log('Error downloading image: ', error.message);
-        }
-    }
-
-    async function uploadAvatar(event: any) {
-        try {
-            setUploading(true);
-
-            if (!event.target.files || event.target.files.length === 0) {
-                throw new Error('You must select an image to upload.');
-            }
-
-            const file = event.target.files[0];
-            const fileExt = file.name.split('.').pop();
-            const fileName = `${Math.random()}.${fileExt}`;
-            const filePath = `${fileName}`;
-
-            let { error: uploadError } = await supabase.storage.from('avatars').upload(filePath, file);
-
-            if (uploadError) {
-                throw uploadError;
-            }
-
-            if (onUpload) {
-                onUpload(event, filePath);
-            }
-        } catch (error: any) {
-            alert(error.message);
-        } finally {
-            setUploading(false);
         }
     }
 
@@ -75,19 +44,6 @@ const Avatar: React.FC<AvatarProps> = ({ url, size, onUpload }) => {
                     style={{ height: size, width: size }}
                 />
             )}
-            <div className="mt-5">
-                <label className="button primary block font-mono italic" htmlFor="single">
-                    {uploading ? 'Uploading ...' : 'Upload image'}
-                </label>
-                <input
-                    style={{ visibility: 'hidden', position: 'absolute' }}
-                    type="file"
-                    id="single"
-                    accept="image/*"
-                    onChange={uploadAvatar}
-                    disabled={uploading}
-                />
-            </div>
         </div>
     );
 };

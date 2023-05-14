@@ -1,4 +1,4 @@
-// import Icon from "../assets/images/icon.png"
+import { Link } from "react-router-dom";
 import Logo from "../assets/images/logo.png"
 // import SocialIcons from "./SocialIcons";
 import ThemeChanger from "./ThemeChanger";
@@ -18,24 +18,24 @@ const Footer: React.FC = () => {
                     <img src={Logo} alt="Logo" width="350" height="350" className="cursor-pointer" onClick={handleLogoClick}/>
                 </div>
                 <div className="flex flex-col gap-5">
-                    <span className="footer-title">Services</span>
-                    <a className="link link-hover">Branding</a>
-                    <a className="link link-hover">Design</a>
-                    <a className="link link-hover">Marketing</a>
-                    <a className="link link-hover">Advertisement</a>
+                    <span className="footer-title">Categories</span>
+                    <Link to="/jobs/game-design" className="link link-hover">Game Design</Link>
+                    <Link to="/jobs/game-development" className="link link-hover">Game Development</Link>
+                    <Link to="/jobs/game-art" className="link link-hover">Game Art</Link>
+                    <Link to="/jobs/qa-testing" className="link link-hover">QA Testing</Link>
                 </div>
                 <div className="flex flex-col gap-5">
                     <span className="footer-title">Company</span>
-                    <a className="link link-hover">About us</a>
-                    <a className="link link-hover">Contact</a>
-                    <a className="link link-hover">Jobs</a>
-                    <a className="link link-hover">Press kit</a>
+                    <Link to="/about" className="link link-hover">About</Link>
+                    <Link to="/branding" className="link link-hover">Branding</Link>
+                    <Link to="/contact" className="link link-hover">Contact</Link>
+                    <Link to="/credits" className="link link-hover">Credits</Link>
                 </div>
                 <div className="flex flex-col gap-5">
                     <span className="footer-title">Legal</span>
-                    <a className="link link-hover">Terms of use</a>
-                    <a className="link link-hover">Privacy policy</a>
-                    <a className="link link-hover">Cookie policy</a>
+                    <Link to="/terms" className="link link-hover">Terms of use</Link>
+                    <Link to="/privacy" className="link link-hover">Privacy policy</Link>
+                    <Link to="/cookies" className="link link-hover">Cookie policy</Link>
                     <ThemeChanger />
                 </div>
             </div>
