@@ -8,8 +8,16 @@ import Avatar from './Avatar';
 import ButtonSignout from '../components/ButtonSignout';
 import { greetUser } from '../utils/time';
 
-
-const Account: React.FC = ({ session }) => {
+type SessionType = {
+    user: {
+        id: string;
+        email: string;
+        user_metadata: {
+        user_name: string;
+        }
+    }
+}
+const Account: React.FC<{session: SessionType}> = ({ session }) => { // specify type of props as an object with a single property `sesssion` of type `SessionType`
     const [loading, setLoading] = useState(true);
     const [username, setUsername] = useState("");
     const [website, setWebsite] = useState("");
@@ -69,7 +77,7 @@ const Account: React.FC = ({ session }) => {
     return (
         <div className="flex flex-col items-center justify-center gap-10">
             {/* Greet User */}
-            {!session ? <div className="font-mono">Hello</div> : <div className='font-mono'>{greetUser(session.user.user_metadata.user_name)}</div>}
+            <div className='font-mono'>{greetUser()} {session.user.user_metadata.user_name}</div>
             {/* Account Settings */}
             <h2 className="font-display text-4xl">Account Settings</h2>
             <form onSubmit={updateProfile} className="flex w-1/4 flex-col gap-5 font-mono">
