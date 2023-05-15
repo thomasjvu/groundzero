@@ -12,10 +12,10 @@ const Post: React.FC = () => {
             <div id="container-post" className="flex flex-col gap-10">
                 <HeroOverlay
                     image="https://res.cloudinary.com/dlcz9y0nv/image/upload/v1683850603/gzo/aesthetic-sniper-girl_g5ejhq.png"
-                    title="Post a job"
-                    text="We post the best video game industry jobs and have a growing database."
-                    primaryButtonText="Get a job"
-                    secondaryButtonText="Stop being lazy"
+                    title="Find Your New Recruit"
+                    text="Get your job noticed by talented professionals in the gaming industry"
+                    // primaryButtonText="Get a job"
+                    // secondaryButtonText="Stop being lazy"
                 />
                 <div id="cards-container" className="flex justify-center gap-20">
                     <Card
@@ -42,11 +42,11 @@ const Post: React.FC = () => {
                     <h2 className="font-display text-4xl">Job Boosts</h2>
                     <p className="font-mono">Boost your jobs from as little as $25. Fully boosted listings achieve up to 6x the reach of basic listings.</p>
                     <div className="companies-grid grid grid-cols-3 grid-rows-2 gap-10">
-                        <CardSlim title="Sticky" text="We'll pin your job to the topp of our main page and every releveant search page" iconName="jam:twitter"/>
-                        <CardSlim title="Email" text="We'll send your job to the inboxes of games industry job hunters" iconName="jam:twitter"/>
-                        <CardSlim title="Highlight" text="We'll make your job stand out on the main page and every relevant search page" iconName="jam:twitter"/>
+                        <CardSlim title="Sticky" text="We'll pin your job to the topp of our main page and every releveant search page" iconName="jam:pin-f"/>
+                        <CardSlim title="Email" text="We'll send your job to the inboxes of games industry job hunters" iconName="jam:envelope-f"/>
+                        <CardSlim title="Highlight" text="We'll make your job stand out on the main page and every relevant search page" iconName="jam:highlighter-f"/>
                         <CardSlim title="Twitter" text="We'll share your job with our engaged followers and the rest of Twitter" iconName="jam:twitter"/>
-                        <CardSlim title="LinkedIn" text="We'll promote your job to our professional followers and the rest of LinkedIn" iconName="jam:twitter"/>
+                        <CardSlim title="LinkedIn" text="We'll promote your job to our professional followers and the rest of LinkedIn" iconName="jam:linkedin"/>
                     </div>
                 </section>
             </div>
