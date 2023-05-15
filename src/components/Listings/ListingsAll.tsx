@@ -8,11 +8,15 @@ type QueryOption = 'date-asc' | 'date-dsc'; // define the possible query options
 const ListingsAll: React.FC = () => {
     const [listings, setListings] = useState<Listing[]>([]); // specify the type of listings
     const [queryOption, setQueryOption] = useState<QueryOption>('date-dsc');
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
 
+    // trigger a fetch whenever the query option changes
     useEffect(() => {
         fetchListings();
-    }, [queryOption]); // trigger a fetch whenever the query option changes
+    }, [queryOption]);
 
+    // fetch the top 10 listings depending on the query
     const fetchListings = async () => {
         try {
             if (queryOption === 'date-asc') {
@@ -20,32 +24,60 @@ const ListingsAll: React.FC = () => {
                     .from('listings')
                     .select()
                     .order('created_at', { ascending: true })
-                    .range(0, 9)
+                    .range(0, 9);
 
                 if (error) {
-                    throw error;
+                    throw new Error('Error fetching listings');
                 }
+
                 if (data) {
-                    setListings(data);
-                    console.log('Listings Data: ', data);
+                    const transformedData = data.map((item: any) => ({
+                        id: item.id,
+                        title: item.title,
+                        category: item.category,
+                        created_at: item.created_at,
+                        level: item.level,
+                        location: item.location,
+                        salary_min: item.salary_min,
+                        salary_max: item.salary_max,
+                        contract: item.contract,
+                        setting: item.setting
+                    }));
+                    setListings(transformedData);
+                    console.log('Listings Data: ', transformedData);
                 }
             } else if (queryOption === 'date-dsc') {
                 let { data, error } = await supabase
                     .from('listings')
                     .select()
                     .order('created_at', { ascending: false })
-                    .range(0, 9)
+                    .range(0, 9);
 
                 if (error) {
-                    throw error;
+                    throw new Error('Error fetching listings');
                 }
+
                 if (data) {
-                    setListings(data);
-                    console.log('Listings Data: ', data);
+                    const transformedData = data.map((item: any) => ({
+                        id: item.id,
+                        title: item.title,
+                        category: item.category,
+                        created_at: item.created_at,
+                        level: item.level,
+                        location: item.location,
+                        salary_min: item.salary_min,
+                        salary_max: item.salary_max,
+                        contract: item.contract,
+                        setting: item.setting
+                    }));
+                    setListings(transformedData);
+                    console.log('Listings Data: ', transformedData);
                 }
             }
-        } catch (error) {
-            console.error('error fetching listings: ', error);
+        } catch (error: any) {
+            setError(error.message);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -53,11 +85,26 @@ const ListingsAll: React.FC = () => {
         setQueryOption(option);
     };
 
+    if (isLoading) {
+        return (
+            <div>Loading...</div>
+        )
+    }
+
+    if (error) {
+        return (
+            <div className='text-red-500'>Error: {error}</div>
+        )
+    }
+
     return (
         <div className="latest-listings flex w-full flex-col gap-5">
-            <div id="query-selector-group" className='flex gap-5 items-center justify-end font-mono'>
+            <div id="query-selector-group" className="flex items-center justify-end gap-5 font-mono">
                 <label htmlFor="query-option">Sort by:</label>
-                <select id="query-option" className="select select-bordered" onChange={(e) => handleQueryOptionChange(e.target.value as QueryOption)}>
+                <select
+                    id="query-option"
+                    className="select-bordered select"
+                    onChange={(e) => handleQueryOptionChange(e.target.value as QueryOption)}>
                     <option value="date-asc">Date (Asc)</option>
                     <option value="date-dsc">Date (Desc)</option>
                     <option value="relevance">Relevance</option>
