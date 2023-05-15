@@ -41,7 +41,7 @@ const months: string[] = [
 
 const daysAbbr: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
-const units = {
+const units: { [key: string]: number } = {
   year: 24 * 60 * 60 * 1000 * 365,
   month: (24 * 60 * 60 * 1000 * 365) / 12,
   day: 24 * 60 * 60 * 1000,
@@ -53,13 +53,20 @@ const units = {
 // You probably want to change this to your own locale
 const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' })
 
+
 // Get relative time without libraries like moment.js or dayjs (ie '2 days ago')
+type RelativeTimeUnit = 'year' | 'month' | 'day' | 'hour' | 'minute' | 'second';
+
 function getRelativeTime(d1: Date, d2: Date = new Date()): string | undefined {
-  const elapsed = d1.getTime() - d2.getTime()
-  // "Math.abs" accounts for both "past" & "future" scenarios
-  for (const u in units)
-    if (Math.abs(elapsed) > units[u] || u === 'second')
-      return rtf.format(Math.round(elapsed / units[u]), u)
+  const elapsed = d1.getTime() - d2.getTime();
+  for (const u in units) {
+    if (Math.abs(elapsed) > units[u as keyof typeof units] || u === 'second') {
+      const validUnits: RelativeTimeUnit[] = ['year', 'month', 'day', 'hour', 'minute', 'second'];
+      if (validUnits.includes(u as RelativeTimeUnit)) {
+        return rtf.format(Math.round(elapsed / units[u as keyof typeof units]), u as RelativeTimeUnit);
+      }
+    }
+  }
 }
 
 // Format date to be more readable
