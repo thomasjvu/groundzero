@@ -9,7 +9,15 @@ export default {
         display: ["Bebas Neue", "cursive"],
         mono: ["Cascadia Code", "monospace"]
     },
-    extend: {},
+    extend: {
+            height: {
+                '128': '32rem',
+            },
+            minHeight: {
+                '3/4': '75%',
+                '128': '32rem'
+            }
+        },
   },
   plugins: [require('daisyui')],
   daisyui: {
