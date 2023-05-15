@@ -9,6 +9,7 @@ import Post from './pages/Post'
 import Jobs from './pages/Jobs';
 import NotFound from './pages/NotFound';
 
+import Terms from './pages/Legal/Terms';
 import Privacy from './pages/Legal/Privacy';
 import Disclaimers from './pages/Legal/Disclaimers';
 
@@ -28,6 +29,7 @@ const App: React.FC = () => {
                 <Route path="*" element={<NotFound />} />
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/disclaimers" element={<Disclaimers />} />
+                <Route path="/terms" element={<Terms />} />
             </Routes>
         </Router>
     );
