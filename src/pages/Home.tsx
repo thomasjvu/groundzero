@@ -7,8 +7,8 @@ import Layout from "../layouts/Layout";
 import CompaniesGrid from "../components/CompaniesGrid";
 import GlassCard from "../components/GlassCard";
 import HeroOverlay from "../components/HeroOverlay";
-import Listings from "../components/Listings";
-import ListingsForm from "../components/ListingsForm";
+import ListingsLatest from "../components/Listings/ListingsLatest";
+import ListingsForm from "../components/Listings/ListingsForm";
 import SponsorsCardOverlay from "../components/Sponsors/SponsorsCardOverlay"
 
 import { Session } from "@supabase/supabase-js";
@@ -40,7 +40,7 @@ const Home: React.FC = () => {
                 <div id="container-listings" className="grow-1 flex gap-20 font-display text-3xl relative">
                     <section className="flex grow flex-col gap-5">
                         <h3 className="font-display text-3xl">Latest Opportunities</h3>
-                        <Listings />
+                        <ListingsLatest />
                         <ListingsForm />
                     </section>
 

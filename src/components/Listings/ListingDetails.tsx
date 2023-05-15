@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { supabase } from '../supabaseClient';
-import { getFriendlyDate } from '../utils/time.js';
+import { supabase } from '../../supabaseClient';
+import { getFriendlyDate } from '../../utils/time.js';
 import { Icon } from '@iconify/react';
-import ButtonCopyUrl from './Buttons/ButtonCopyUrl.tsx';
-import ButtonShareUrl from './Buttons/ButtonShareUrl.tsx';
+import ButtonCopyUrl from '../Buttons/ButtonCopyUrl.tsx';
+import ButtonShareUrl from '../Buttons/ButtonShareUrl.tsx';
 
 const ListingDetails: React.FC = () => {
     const { id } = useParams<{ id: string }>();

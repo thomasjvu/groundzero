@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { supabase } from '../supabaseClient';
-import { Listing } from '../types/listing';
+import { supabase } from '../../supabaseClient';
+import { Listing } from '../../types/listing';
 
 type QueryOption = 'date-asc' | 'date-dsc'; // define the possible query options
 

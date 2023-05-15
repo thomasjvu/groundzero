@@ -1,5 +1,5 @@
 import Layout from "../layouts/Layout";
-import ListingsAll from "../components/ListingsAll";
+import ListingsAll from "../components/Listings/ListingsAll";
 
 const Jobs: React.FC = () => {
     return (

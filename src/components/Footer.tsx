@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
                 </div>
                 <div className="flex flex-col items-start justify-start gap-5">
                     <span className="footer-title hidden md:block">Legal</span>
-                    <Link to="/disclaimers" className="link hidden md:block link-hover">Disclaimers</Link>
+                    <Link to="/disclaimers" className="link hidden md:block link-hover">Disclaimer</Link>
                     <Link to="/terms" className="link hidden md:block link-hover">Terms of Use</Link>
                     <Link to="/privacy" className="link hidden md:block link-hover">Privacy Policy</Link>
                     <ThemeChanger />
