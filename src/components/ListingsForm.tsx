@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { supabase } from "../supabaseClient";
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.bubble.css'
 import { categoryList } from "../types/category";
 
 
-type Listing = {
-    location: Location
-    setting: Setting
-    contract: Contract
-}
+// type Listing = {
+//     location: Location
+//     setting: Setting
+//     contract: Contract
+// }
 
 type Location = {
     name: string;
