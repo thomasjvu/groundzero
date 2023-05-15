@@ -72,7 +72,6 @@ const Home: React.FC = () => {
                                 title="The Legend of Zelda: Tears of the Kingdom"
                                 buttonLink="https://amzn.to/3MogJLO"
                                 buttonText="Purchase"
-                                className="font-mono"
                             />
                         </div>
                     </section>
