@@ -7,7 +7,7 @@ type QueryOption = 'date-asc' | 'date-dsc'; // define the possible query options
 
 const ListingsAll: React.FC = () => {
     const [listings, setListings] = useState<Listing[]>([]); // specify the type of listings
-    const [queryOption, setQueryOption] = useState<QueryOption>('date-desc');
+    const [queryOption, setQueryOption] = useState<QueryOption>('date-dsc');
 
     useEffect(() => {
         fetchListings();
