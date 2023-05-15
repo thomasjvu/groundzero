@@ -67,11 +67,12 @@ const Home: React.FC = () => {
                             }
                             <SponsorsCardOverlay 
                                 imageSrc="https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.25/c_scale,w_700/ncom/software/switch/70010000063714/05b3d8e8c74beaa43a7714c275a7ad06018ed069bd6bd3f923442b9ac16fdc49"
-                                imageAlt="Legend of Zelda: Tears of the Kingdom cover"
+                                imageAlt="Cover Art of The Legend of Zelda: Tears of the Kingdom"
                                 text="Purchase from our sponsor"
-                                title="Legend of Zelda: Tears of the Kingdom"
+                                title="The Legend of Zelda: Tears of the Kingdom"
                                 buttonLink="https://amzn.to/3MogJLO"
                                 buttonText="Purchase"
+                                className="font-mono"
                             />
                         </div>
                     </section>

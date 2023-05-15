@@ -14,7 +14,7 @@ const SponsorsCardOverlay: React.FC<Props> = ({ title, text, buttonText, buttonL
                 <img src={imageSrc} alt={imageAlt} />
             </figure>
             <div className="card-body">
-                <h2 className="card-title">{title}</h2>
+                <h2 className="card-title text-md">{title}</h2>
                 <p>{text}</p>
                 <div className="card-actions justify-end">
                     <a href={buttonLink} target="_blank" className="btn-secondary btn font-mono">{buttonText}</a>

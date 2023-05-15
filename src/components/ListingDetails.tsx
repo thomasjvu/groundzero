@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
 import { getFriendlyDate } from '../utils/time.js';
 import { Icon } from '@iconify/react';
+import ButtonCopyUrl from './Buttons/ButtonCopyUrl.tsx';
+import ButtonShareUrl from './Buttons/ButtonShareUrl.tsx';
 
 const ListingDetails: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -34,10 +36,8 @@ const ListingDetails: React.FC = () => {
                     <span>{listing.setting}</span>
                 </div>
                 <div id="listing-details-buttons" className="flex gap-5">
-                    <div id="listing-details-button-group" className="btn flex items-center gap-2">
-                        <Icon icon="pixelarticons:section-copy" />
-                        <span>Copy</span>
-                    </div>
+                    <ButtonCopyUrl />
+                    <ButtonShareUrl />
                     <div id="listing-details-button-group" className="btn flex items-center gap-2">
                         <Icon icon="pixelarticons:section-copy" />
                         <span>Save</span>

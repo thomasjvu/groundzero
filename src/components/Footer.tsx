@@ -18,9 +18,9 @@ const Footer: React.FC = () => {
                 </div>
                 <div className="flex flex-col hidden xl:flex gap-5">
                     <span className="footer-title">Categories</span>
+                    <Link to="/jobs/game-art" className="link link-hover">Game Art</Link>
                     <Link to="/jobs/game-design" className="link link-hover">Game Design</Link>
                     <Link to="/jobs/game-development" className="link link-hover">Game Development</Link>
-                    <Link to="/jobs/game-art" className="link link-hover">Game Art</Link>
                     <Link to="/jobs/qa-testing" className="link link-hover">QA Testing</Link>
                 </div>
                 <div className="flex flex-col hidden md:flex gap-5">

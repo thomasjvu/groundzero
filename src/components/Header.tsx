@@ -67,6 +67,12 @@ const Header: React.FC = (): JSX.Element => {
                             <Link to="/contact">Contact</Link>
                         </li>
                         <li>
+                            <Link to="/news">News</Link>
+                        </li>
+                        <li>
+                            <Link to="/training">Training</Link>
+                        </li>
+                        <li>
                             <Link to="/post" className="btn font-mono text-black ml-5" role="button">
                                 Post Job
                             </Link>

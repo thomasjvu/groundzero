@@ -3,19 +3,14 @@ import { useState, useEffect } from "react";
 import { supabase } from "../supabaseClient";
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.bubble.css'
+import { categoryList } from "../types/category";
 
-import Button from "./Button";
 
-type Category = {
-    name: string;
-    value: string;
+type Listing = {
+    location: Location
+    setting: Setting
+    contract: Contract
 }
-
-const categoryList: Category[] = [
-    { name: "Game Development", value: 'game-development' },
-    { name: "Game Design", value: 'game-design' },
-    { name: "Game Art", value: 'game-art' },
-]
 
 type Location = {
     name: string;
@@ -93,13 +88,12 @@ const ListingsForm: React.FC = () => {
                 <div className="formGroup">
                     <label htmlFor="listing-content">Content</label>
                     <ReactQuill
-                        id="listing-content"
+                        id="listing-content-quill"
                         className="w-full font-mono"
                         placeholder="Job description content goes here..."
                         value={content}
                         theme="bubble"
                         onChange={(e) => setListing({ ...listing, content: e})}
-                        required={true}
                     />
                 </div>
                 <div className="formGroup">
