@@ -6,6 +6,7 @@ const AuthCompanySignIn: React.FC = () => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleSignIn = async (e:any) => {
         e.preventDefault()
 

@@ -7,6 +7,7 @@ const AuthUser: React.FC = () => {
     const [loading, setLoading] = useState(false)
     const [email, setEmail] = useState('')
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleLogin = async (e: any) => {
         e.preventDefault()
 
