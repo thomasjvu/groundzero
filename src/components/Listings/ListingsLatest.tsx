@@ -8,7 +8,7 @@ const ListingsLatest: React.FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
-    // if the listings database changes, refetch our listings
+    // trigger a fetch when the component mounts
     useEffect(() => {
         fetchListings();
     }, []);
@@ -23,8 +23,6 @@ const ListingsLatest: React.FC = () => {
                 .range(0, 9);
 
             if (error) {
-                // console.error("Error fetching listings:", error)
-                // return;
                 throw new Error('Error fetching listings');
             }
 
@@ -42,6 +40,7 @@ const ListingsLatest: React.FC = () => {
                     setting: item.setting
                 }));
                 setListings(transformedData);
+                console.log('Listings Data: ', transformedData);
             }
         } catch (error: any) {
             setError(error.message);

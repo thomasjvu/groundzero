@@ -105,8 +105,8 @@ const ListingsAll: React.FC = () => {
                     id="query-option"
                     className="select-bordered select"
                     onChange={(e) => handleQueryOptionChange(e.target.value as QueryOption)}>
+                    <option value="date-dsc">Date (Dsc)</option>
                     <option value="date-asc">Date (Asc)</option>
-                    <option value="date-dsc">Date (Desc)</option>
                     <option value="relevance">Relevance</option>
                 </select>
             </div>
