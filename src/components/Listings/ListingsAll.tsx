@@ -5,7 +5,7 @@ import { Listing } from '../../types/listing';
 
 type QueryOption = 'date-asc' | 'date-dsc'; // define the possible query options
 
-const ListingsAll: React.FC = () => {
+const ListingsAll: React.FC = (): JSX.Element => {
     const [listings, setListings] = useState<Listing[]>([]); // specify the type of listings
     const [queryOption, setQueryOption] = useState<QueryOption>('date-dsc');
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -20,7 +20,7 @@ const ListingsAll: React.FC = () => {
     const fetchListings = async () => {
         try {
             if (queryOption === 'date-asc') {
-                let { data, error } = await supabase
+                const { data, error } = await supabase
                     .from('listings')
                     .select()
                     .order('created_at', { ascending: true })
@@ -47,7 +47,7 @@ const ListingsAll: React.FC = () => {
                     console.log('Listings Data: ', transformedData);
                 }
             } else if (queryOption === 'date-dsc') {
-                let { data, error } = await supabase
+                const { data, error } = await supabase
                     .from('listings')
                     .select()
                     .order('created_at', { ascending: false })
@@ -74,6 +74,7 @@ const ListingsAll: React.FC = () => {
                     console.log('Listings Data: ', transformedData);
                 }
             }
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
             setError(error.message);
         } finally {

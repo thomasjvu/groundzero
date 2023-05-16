@@ -64,6 +64,7 @@ const ListingsLatest: React.FC = () => {
                 setListings(transformedData);
                 console.log('Listings Data: ', transformedData);
             }
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
             setError(error.message);
         } finally {
@@ -86,7 +87,8 @@ const ListingsLatest: React.FC = () => {
         <div className="latest-listings flex w-full flex-col gap-5">
             {listings &&
                 listings.map((listing:Partial<Listing>) => {
-                    const createdAt = listing.created_at ? new Date(listing.created_at) : null;
+                    const {title, username, min_wage, max_wage, level, location, setting, rate, contract, created_at} = listing
+                    const createdAt = created_at ? new Date(created_at) : null;
                     const relativeTime = createdAt ? getRelativeTime(createdAt) : '';
                 return (
                     <Link to={`/jobs/${listing.id}`} key={listing.id}>
@@ -94,35 +96,35 @@ const ListingsLatest: React.FC = () => {
                             <div id="group-row" className="flex flex-col md:flex-row gap-5 uppercase">
                                 <img className="rounded" src={`${import.meta.env.VITE_SUPABASE_STORAGE}${listing.avatar_url}`} width={50} height={50} />
                                 <div>
-                                    <h3 className="text-xl font-bold">{listing.title}</h3>
-                                    <p className="font-mono text-sm">{listing.username}</p>
+                                    <h3 className="text-xl font-bold">{title}</h3>
+                                    <p className="font-mono text-sm">{username}</p>
                                 </div>
                             </div>
                             <div id="group-row" className="flex flex-col md:flex-row gap-5 uppercase">
                                 <div id="group-level" className='flex items-center gap-1'>
                                     <Icon icon="jam:crown-f" width={15} height={15}/>
-                                    <span className="text-sm">{listing.level}</span>
+                                    <span className="text-sm">{level?.name}</span>
                                 </div>
                                 <div id="group-location" className='flex items-center gap-1'>
                                     <Icon icon="jam:gps-f" width={15} height={15}/>
-                                    <span className="text-sm">{listing.location}</span>
+                                    <span className="text-sm">{location?.name}</span>
                                 </div>
                                 <div id="group-location" className='flex items-center gap-1'>
                                     <Icon icon="jam:newspaper-f" width={15} height={15}/>
-                                    <span className="text-sm">{listing.setting}</span>
+                                    <span className="text-sm">{setting?.name}</span>
                                 </div>
                             </div>
                             {listing.min_wage && listing.max_wage && listing.rate &&
                                 <div id="group-row" className="hidden md:flex flex-col md:flex-row gap-5 uppercase">
                                     <div id="group-salary" className='flex items-center gap-1'>
                                         <Icon icon="jam:coin-f" width={15} height={15}/>
-                                        <span className="text-sm">${listing.min_wage} - </span>
-                                        <span className="text-sm">${listing.max_wage}</span>
-                                        <span className="text-sm">({listing.rate})</span>
+                                        <span className="text-sm">${min_wage} - </span>
+                                        <span className="text-sm">${max_wage}</span>
+                                        <span className="text-sm">({rate?.name})</span>
                                     </div>
                                     <div id="group-contract" className='flex items-center gap-1'>
                                         <Icon icon="jam:newspaper-f" width={15} height={15}/>
-                                        <span className="text-sm">{listing.contract}</span>
+                                        <span className="text-sm">{contract?.name}</span>
                                     </div>
                                 </div>
                             }
