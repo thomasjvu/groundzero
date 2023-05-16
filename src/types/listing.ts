@@ -9,4 +9,5 @@ export interface Listing {
     salary_max?: number;
     contract?: string;
     setting?: string;
+    company_id?: string;
 }

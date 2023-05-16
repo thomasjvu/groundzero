@@ -4,7 +4,7 @@ import CyberpunkGirl from "../assets/images/aesthetic-cyberpunk-girl.png"
 import SniperGirl from "../assets/images/aesthetic-sniper-girl.png"
 
 import Layout from "../layouts/Layout";
-import DisplayCompanies from "../components/DisplayCompanies"
+import DisplayCompanies from "../components/DisplayCompanies";
 import GlassCard from "../components/GlassCard";
 import HeroOverlay from "../components/HeroOverlay";
 import ListingsLatest from "../components/Listings/ListingsLatest";
@@ -37,15 +37,15 @@ const Home: React.FC = () => {
                     secondaryButtonText="Find a job"
                 />
                 <DisplayCompanies />
-                <div id="container-listings" className="grow-1 flex gap-20 font-display text-3xl relative">
+                <div id="container-listings" className="grow-1 flex flex-col xl:flex-row gap-20 font-display text-3xl relative">
                     <section className="flex grow flex-col gap-5">
                         <h3 className="font-display text-3xl">Latest Opportunities</h3>
                         <ListingsLatest />
                         <ListingsForm />
                     </section>
 
-                    <section className="">
-                        <div className="sticky top-28 flex flex-col gap-5 mt-8">
+                    <div className="">
+                        <div className="xl:sticky xl:top-28 flex flex-col gap-5 mt-8">
                             {session && session.user.user_metadata.company === null ?
                                 <GlassCard
                                     src={SniperGirl}
@@ -66,7 +66,7 @@ const Home: React.FC = () => {
                                 />
                             }
                             <SponsorsCardOverlay 
-                                imageSrc="https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.25/c_scale,w_700/ncom/software/switch/70010000063714/05b3d8e8c74beaa43a7714c275a7ad06018ed069bd6bd3f923442b9ac16fdc49"
+                                imageSrc="https://res.cloudinary.com/dlcz9y0nv/image/upload/v1684201052/gzo/gaming%20sponsors/Tears-of-the-Kingdom_cover_poe0gb.png"
                                 imageAlt="Cover Art of The Legend of Zelda: Tears of the Kingdom"
                                 text="Purchase from our sponsor"
                                 title="The Legend of Zelda: Tears of the Kingdom"
@@ -74,7 +74,7 @@ const Home: React.FC = () => {
                                 buttonText="Purchase"
                             />
                         </div>
-                    </section>
+                    </div>
                 </div>
             </div>
         </Layout>

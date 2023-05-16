@@ -13,7 +13,7 @@ const Card: React.FC<Props> = ({ title, text, buttonText, features }) => {
                 <p className="font-mono italic">{text}</p>
                 <button className="btn bg-yellow-500 text-black font-mono w-full">{buttonText}</button>
                 <div className="card-features font-mono">
-                    <ul>
+                    <ul className="flex flex-col gap-2">
                         {features.map((feature, index) => (
                             <li className="text-left list-disc" key={index}>{feature}</li>
                         ))}

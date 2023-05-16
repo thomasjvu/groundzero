@@ -22,7 +22,7 @@ const Post: React.FC = () => {
                         title="Single Job"
                         text="Fill in a short form and see your job go live in minutes."
                         buttonText="Get Started"
-                        features={["Get a full month on our busy jobs feed", "Receive applications wherever you like to keep your hiring activity streamlined", "Manage your job through our secure hiring dashboard and close it when you fill it"]}
+                        features={["Have your job on our busy jobs feed until the position is filled", "Receive applications wherever you like to keep your hiring activity streamlined", "Manage your job through our secure hiring dashboard and close it when you fill it"]}
                     />
                     <Card
                         title="Multiple Jobs"

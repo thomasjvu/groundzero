@@ -18,3 +18,11 @@
 html {
     scroll-behavior: smooth;
 }
+
+.ql-editor {
+    border-radius: 5px;
+    font-family: 'Cascadia Code';
+    background: white;
+    height: 100px;
+    color: black;
+}

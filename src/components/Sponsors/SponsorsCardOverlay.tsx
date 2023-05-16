@@ -9,7 +9,7 @@ type Props = {
 
 const SponsorsCardOverlay: React.FC<Props> = ({ title, text, buttonText, buttonLink, imageSrc, imageAlt }) => {
     return (
-        <div className="card image-full w-96 bg-neutral-400 shadow-xl">
+        <div className="card image-full w-full xl:w-96 bg-neutral-400 shadow-xl">
             <figure>
                 <img src={imageSrc} alt={imageAlt} />
             </figure>

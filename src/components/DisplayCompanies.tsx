@@ -44,7 +44,7 @@ const DisplayCompanies: React.FC = () => {
         <section className="companies-grid-section">
             <h3 className="text-4xl font-display">Companies</h3>
             <p className="font-mono py-5 italic">We have listings from some of the biggest gaming-related companies in the world.</p>
-            <div className="companies-grid flex justify-between gap-10">
+            <div className="companies-grid flex justify-between gap-5 lg:gap-10">
                 {displayCompaniesList.map((displayCompany) => (
                     <DisplayCompanyItem src={displayCompany.image} alt={displayCompany.alt} key={displayCompany.name} />
                 ))}

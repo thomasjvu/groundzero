@@ -11,7 +11,7 @@ type Props = {
 
 const GlassCard: React.FC<Props> = ({ alt, src, title, text, buttonText, buttonLink }) => {
     return (
-        <div className="card glass w-96">
+        <div className="card glass w-full xl:w-96">
             <figure>
                 <img src={src} alt={alt} />
             </figure>
