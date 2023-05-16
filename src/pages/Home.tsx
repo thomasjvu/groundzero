@@ -4,7 +4,7 @@ import CyberpunkGirl from "../assets/images/aesthetic-cyberpunk-girl.png"
 import SniperGirl from "../assets/images/aesthetic-sniper-girl.png"
 
 import Layout from "../layouts/Layout";
-import CompaniesGrid from "../components/CompaniesGrid";
+import DisplayCompanies from "../components/DisplayCompanies"
 import GlassCard from "../components/GlassCard";
 import HeroOverlay from "../components/HeroOverlay";
 import ListingsLatest from "../components/Listings/ListingsLatest";
@@ -36,7 +36,7 @@ const Home: React.FC = () => {
                     primaryButtonText="Hire Talent"
                     secondaryButtonText="Find a job"
                 />
-                <CompaniesGrid />
+                <DisplayCompanies />
                 <div id="container-listings" className="grow-1 flex gap-20 font-display text-3xl relative">
                     <section className="flex grow flex-col gap-5">
                         <h3 className="font-display text-3xl">Latest Opportunities</h3>
