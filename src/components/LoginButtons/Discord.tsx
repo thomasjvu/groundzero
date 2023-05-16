@@ -21,7 +21,7 @@ const LoginButtonsDiscord: React.FC = () => {
 
     return (
         <button
-            className="button btn w-full font-mono"
+            className="button btn w-full font-mono hover:bg-neutral-100"
             disabled={loading}
             onClick={handleDiscordLogin}>
             {loading ? (

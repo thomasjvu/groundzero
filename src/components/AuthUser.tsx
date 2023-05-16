@@ -25,23 +25,22 @@ const AuthUser: React.FC = () => {
 
 
     return (
-        <div className="">
-            <div className="form-widget">
+            <div className="form-signup-user w-full">
                 <h1 className="header text-5xl font-display text-center">Login</h1>
-                <form className="form-widget" onSubmit={handleLogin}>
-                    <div>
-                        <input className="inputField" type="email" placeholder="Your email" value={email} required={true} onChange={(e) => setEmail(e.target.value)} />
+                <form className="form-widget font-mono flex flex-col gap-5" onSubmit={handleLogin}>
+                    <div className="form-group flex flex-col gap-5">
+                        <label htmlFor="user-email">Email</label>
+                        <input id="user-email" className="input input-bordered" type="email" placeholder="Your email" value={email} required={true} onChange={(e) => setEmail(e.target.value)} />
                     </div>
-                    <div>
-                        <button className={'button block'} disabled={loading}>
+                    <div className="flex flex-col gap-5">
+                        <button className="btn btn-primary w-full" disabled={loading}>
                             {loading ? <span>Loading</span> : <span>Send Magic Link</span>}
                         </button>
+                        <LoginButtonsGitHub />
+                        <LoginButtonsDiscord />
                     </div>
                 </form>
-                <LoginButtonsGitHub />
-                <LoginButtonsDiscord />
             </div>
-        </div>
     )
 }
 
