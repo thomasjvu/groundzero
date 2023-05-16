@@ -19,10 +19,7 @@ const AuthCompanySignUp: React.FC = () => {
         if (error) {
             alert(error.message)
         } else {
-            const role = "company"
-            await supabase.from('users').update({role}).eq('id', data.user?.id)
             alert('Check your email for the login link!')
-
         }
         setLoading(false)
 

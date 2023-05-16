@@ -27,14 +27,14 @@ const Post: React.FC = () => {
                     <Card
                         title="Multiple Jobs"
                         text="Save time and money with our brand new solution."
-                        buttonText="Subscribe"
-                        features={["Get all the benefits of posting single jobs without needing to copy/paste descriptions.", "Share the links to your job descriptions and we’ll post them all on your behalf.", "Earn a stacking 2.5% discount on each job you post and on any boosts you add.", "Pre-pay for future job posts to take advantage of bigger savings and reduce admin."]}
+                        buttonText="Coming Soon"
+                        features={["Get all the benefits of posting single jobs without needing to copy/paste descriptions.", "Share the links to your job descriptions and we’ll post them all on your behalf.", "Earn a stacking 25% discount on any job boosts."]}
                     />
                     <Card
                         title="Full Service"
                         text="Let us take care of finding the people you want."
-                        buttonText="Full Service"
-                        features={["Share the link to your careers page and our team will add all of your jobs to GroundZero.", "Anything you update on your careers page will be reflected on our platform within a day.", "We’ll add new jobs, close expired ones, and update descriptions/locations/closing dates.", "Earn a 50% discount on every new job we add for you and any boosts you select.", "Also get a 50% discount on all eight of our impactful employer branding options."]}
+                        buttonText="Coming Soon"
+                        features={["Share the link to your careers page and our team will add all of your jobs to GroundZero.", "Anything you update on your careers page will be reflected on our platform within a day.", "We’ll add new jobs, close expired ones, and update all job data.", "Earn a 50% discount on all boosts."]}
                     />
                 </div>
 
