@@ -76,7 +76,7 @@ const ListingsForm: React.FC = () => {
 
     return (
         <>
-            {session && (
+            {session && session.user.user_metadata.company === true && (
                 <form
                     className="new-listing-form flex flex-col gap-5"
                     onSubmit={(e) => {

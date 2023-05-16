@@ -12,7 +12,7 @@ const AuthCompanySignUp: React.FC = () => {
         setLoading(true)
         const { data, error } = await supabase.auth.signUp({ email, password, options: {
             data: {
-                company: 'true'
+                company: true
             }
         } })
 
