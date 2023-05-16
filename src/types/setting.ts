@@ -1,7 +1,7 @@
 export interface Setting {
     name: string;
     value: string;
-};
+}
 
 export const settingList: Setting[] = [
     { name: 'Remote', value: 'remote' },

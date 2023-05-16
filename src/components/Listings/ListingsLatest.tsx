@@ -103,15 +103,15 @@ const ListingsLatest: React.FC = () => {
                             <div id="group-row" className="flex flex-col md:flex-row gap-5 uppercase">
                                 <div id="group-level" className='flex items-center gap-1'>
                                     <Icon icon="jam:crown-f" width={15} height={15}/>
-                                    <span className="text-sm">{level?.name}</span>
+                                    <span className="text-sm">{level}</span>
                                 </div>
                                 <div id="group-location" className='flex items-center gap-1'>
                                     <Icon icon="jam:gps-f" width={15} height={15}/>
-                                    <span className="text-sm">{location?.name}</span>
+                                    <span className="text-sm">{location}</span>
                                 </div>
                                 <div id="group-location" className='flex items-center gap-1'>
                                     <Icon icon="jam:newspaper-f" width={15} height={15}/>
-                                    <span className="text-sm">{setting?.name}</span>
+                                    <span className="text-sm">{setting}</span>
                                 </div>
                             </div>
                             {listing.min_wage && listing.max_wage && listing.rate &&
@@ -120,11 +120,11 @@ const ListingsLatest: React.FC = () => {
                                         <Icon icon="jam:coin-f" width={15} height={15}/>
                                         <span className="text-sm">${min_wage} - </span>
                                         <span className="text-sm">${max_wage}</span>
-                                        <span className="text-sm">({rate?.name})</span>
+                                        <span className="text-sm">({rate})</span>
                                     </div>
                                     <div id="group-contract" className='flex items-center gap-1'>
                                         <Icon icon="jam:newspaper-f" width={15} height={15}/>
-                                        <span className="text-sm">{contract?.name}</span>
+                                        <span className="text-sm">{contract}</span>
                                     </div>
                                 </div>
                             }
