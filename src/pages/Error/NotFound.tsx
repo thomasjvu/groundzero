@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import LayoutError from '../../layouts/LayoutError';
 
-const NotFound: React.FC = () => {
+const NotFound: React.FC = (): JSX.Element => {
     return (
         <LayoutError>
             <>

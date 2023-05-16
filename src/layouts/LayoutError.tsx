@@ -5,7 +5,7 @@ type LayoutProps = {
     children: ReactNode;
 };
 
-const LayoutError: React.FC<LayoutProps> = ({ children }) => {
+const LayoutError: React.FC<LayoutProps> = ({ children }): JSX.Element => {
     return (
         <div id="layout-error" className="flex justify-center items-center min-h-screen">
             <main className="w-3/4 flex flex-col justify-center items-center gap-10">

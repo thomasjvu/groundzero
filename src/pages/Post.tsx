@@ -6,7 +6,7 @@ import CardSlim from "../components/Cards/CardSlim";
 
 import Layout from "../layouts/Layout";
 
-const Post: React.FC = () => {
+const Post: React.FC = (): JSX.Element => {
     return (
         <Layout>
             <div id="container-post" className="flex flex-col gap-10">

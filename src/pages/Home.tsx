@@ -13,7 +13,7 @@ import SponsorsCardOverlay from "../components/Sponsors/SponsorsCardOverlay"
 
 import { Session } from "@supabase/supabase-js";
 
-const Home: React.FC = () => {
+const Home: React.FC = (): JSX.Element => {
     const [session, setSession] = useState<Session | null>(null);
 
     useEffect(() => {

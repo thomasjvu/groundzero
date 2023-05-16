@@ -5,7 +5,7 @@ import Auth from "../components/Auth";
 import Account from "../components/Account"
 import { Session } from "@supabase/supabase-js";
 
-const Profile: React.FC = () => {
+const Profile: React.FC = (): JSX.Element => {
     const [session, setSession] = useState<Session | null>(null);
 
     useEffect(() => {

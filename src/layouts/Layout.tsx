@@ -6,7 +6,7 @@ type LayoutProps = {
     children: ReactNode;
 };
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC<LayoutProps> = ({ children }): JSX.Element => {
     return (
         <div id="main-layout" className="flex flex-col items-center justify-center gap-20">
             <Header />

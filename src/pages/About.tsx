@@ -1,6 +1,6 @@
 import Layout from "../layouts/Layout"
 
-const About: React.FC = () => {
+const About: React.FC = (): JSX.Element => {
     return (
         <Layout>
             <h1>About</h1>
