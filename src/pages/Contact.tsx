@@ -7,7 +7,7 @@ const Contact: React.FC = (): JSX.Element => {
         <Layout>
             <div className="flex gap-20">
                 <div className="flex flex-col min-h-full">
-                    <section className="border-b-2 pb-5 mb-5 border-white">
+                    <section className="border-b-2 pb-5 mb-5 border-neutral">
                         <h2 className="font-display text-4xl my-2">Contact Us</h2>
                         <p className="font-mono">
                             Want to get in touch? You can reach us in a number of ways.
