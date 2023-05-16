@@ -106,16 +106,17 @@ const ListingsAll: React.FC = (): JSX.Element => {
                     id="query-option"
                     className="select-bordered select"
                     onChange={(e) => handleQueryOptionChange(e.target.value as QueryOption)}>
-                    <option value="date-dsc">Date (Dsc)</option>
-                    <option value="date-asc">Date (Asc)</option>
+                    <option value="date-dsc">Date ↓</option>
+                    <option value="date-asc">Date ↑</option>
                     <option value="relevance">Relevance</option>
                 </select>
             </div>
-            {listings.map((listing) => (
+            {listings.map((listing: Partial<Listing>) => (
                 <Link to={`/jobs/${listing.id}`} key={listing.id}>
                     <div className="rounded-xl border bg-transparent p-10">
                         <h3 className="font-mono text-xl font-bold">{listing.title}</h3>
-                        <h4 className="font-mono text-xl">{listing.category}</h4>
+                        <h3 className="font-mono text-xl font-bold">{listing.created_at}</h3>
+                        {/* <h4 className="font-mono text-xl">{listing.category}</h4> */}
                         {/* <h6>{listing.company}</h6> */}
                     </div>
                 </Link>

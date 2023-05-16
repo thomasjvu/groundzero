@@ -4,7 +4,7 @@ import { Setting } from "./setting";
 import { Level } from "./level";
 import { Contract } from "./contract";
 import { Location } from "./location";
-import { Profile } from "./profile";
+// import { Profile } from "./profile";
 
 export interface Listing {
     id: string;
