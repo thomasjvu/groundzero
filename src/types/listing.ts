@@ -20,4 +20,5 @@ export interface Listing {
     company_id?: string;
     avatar_url?: string;
     username?: string;
+    tags?: string[];
 }

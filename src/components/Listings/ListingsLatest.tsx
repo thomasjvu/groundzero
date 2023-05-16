@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { supabase } from '../../supabaseClient';
 import { Listing } from '../../types/listing';
 import { Icon } from '@iconify/react';
-// import { getRelativeTime } from '../../utils/time';
+import { getRelativeTime } from '../../utils/time';
 
 const ListingsLatest: React.FC = () => {
     const [listings, setListings] = useState<any>([]);
@@ -85,7 +85,10 @@ const ListingsLatest: React.FC = () => {
     return (
         <div className="latest-listings flex w-full flex-col gap-5">
             {listings &&
-                listings.map((listing:Partial<Listing>) => (
+                listings.map((listing:Partial<Listing>) => {
+                    const createdAt = listing.created_at ? new Date(listing.created_at) : null;
+                    const relativeTime = createdAt ? getRelativeTime(createdAt) : '';
+                return (
                     <Link to={`/jobs/${listing.id}`} key={listing.id}>
                         <div className="rounded-xl border bg-transparent p-10 font-mono hover:border-primary flex flex-col gap-4">
                             <div id="group-row" className="flex flex-col md:flex-row gap-5 uppercase">
@@ -126,12 +129,13 @@ const ListingsLatest: React.FC = () => {
                             <div id="group-row" className="hidden md:flex flex-col md:flex-row gap-5 uppercase">
                                 <div id="group-calendar" className='flex items-center gap-1'>
                                     <Icon icon="jam:calendar-alt-f" width={15} height={15}/>
-                                    <span className="text-sm">{listing.created_at?.split('T')[0]}</span>
+                                    <span className="text-sm">{relativeTime}</span>
                                 </div>
                             </div>
                         </div>
                     </Link>
-                ))}
+                )
+                })}
         </div>
     );
 };
