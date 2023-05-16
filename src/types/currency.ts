@@ -1,4 +1,4 @@
-export type Currency = {
+export interface Currency {
     name: string;
     value: string;
 };

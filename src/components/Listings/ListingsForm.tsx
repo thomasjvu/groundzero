@@ -1,86 +1,17 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { supabase } from '../../supabaseClient';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.bubble.css';
-import { categoryList } from '../../types/category';
 import { Session } from '@supabase/supabase-js';
 
-// type Listing = {
-//     location: Location
-//     setting: Setting
-//     contract: Contract
-// }
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.bubble.css';
 
-type Location = {
-    name: string;
-    value: string;
-};
-
-const locationList: Location[] = [
-    { name: 'New York', value: 'new-york' },
-    { name: 'London', value: 'london' },
-    { name: 'Paris', value: 'paris' },
-    { name: 'Tokyo', value: 'tokyo' },
-    { name: 'California', value: 'california' },
-    { name: 'Washington', value: 'washington' },
-    { name: 'Boston', value: 'boston' },
-    { name: 'Global', value: 'global' }
-];
-
-type Setting = {
-    name: string;
-    value: string;
-};
-
-const settingList: Setting[] = [
-    { name: 'Remote', value: 'remote' },
-    { name: 'Hybrid', value: 'hybrid' },
-    { name: 'On-Site', value: 'on-site' }
-];
-
-type Contract = {
-    name: string;
-    value: string;
-};
-
-const contractList: Contract[] = [
-    { name: 'Full Time', value: 'full-time' },
-    { name: 'Part Time', value: 'part-time' },
-    { name: 'Contract', value: 'contract' },
-    { name: 'Temporary', value: 'temporary' },
-    { name: 'Freelance', value: 'freelance' },
-    { name: 'Internship', value: 'internship' },
-    { name: 'Externship', value: 'externship' }
-];
-
-type Level = {
-    name: string;
-    value: string;
-};
-
-const levelList: Level[] = [
-    { name: 'Intern', value: 'intern' },
-    { name: 'Entry Level', value: 'entry' },
-    { name: 'Associate', value: 'associate' },
-    { name: 'Senior', value: 'senior' },
-    { name: 'Manager', value: 'manager' },
-    { name: 'Director', value: 'director' },
-    { name: 'Executive', value: 'executive' }
-];
-
-type Rate = {
-    name: string;
-    value: string;
-}
-
-const rateList: Rate[] = [
-    { name: 'Annual', value: 'annual'},
-    { name: 'Hourly', value: 'hourly'},
-    { name: 'Weekly', value: 'weekly'},
-] 
-
-
+import { categoryList } from '../../types/category';
+import { locationList } from '../../types/location';
+import { settingList } from '../../types/setting';
+import { contractList } from '../../types/contract';
+import { levelList } from '../../types/level';
+import { rateList } from '../../types/rate';
 
 const ListingsForm: React.FC = () => {
 
@@ -94,7 +25,6 @@ const ListingsForm: React.FC = () => {
             setSession(session);
         });
 
-        // console.log("Header Session", session)
     }, []);
 
     const [listing, setListing] = useState({

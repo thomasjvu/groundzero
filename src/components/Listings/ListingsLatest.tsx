@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { supabase } from '../../supabaseClient';
-// import { Listing } from '../../types/listing';
+import { Listing } from '../../types/listing';
 import { Icon } from '@iconify/react';
 // import { getRelativeTime } from '../../utils/time';
 
@@ -85,7 +85,7 @@ const ListingsLatest: React.FC = () => {
     return (
         <div className="latest-listings flex w-full flex-col gap-5">
             {listings &&
-                listings.map((listing:any) => (
+                listings.map((listing:Partial<Listing>) => (
                     <Link to={`/jobs/${listing.id}`} key={listing.id}>
                         <div className="rounded-xl border bg-transparent p-10 font-mono hover:border-primary flex flex-col gap-4">
                             <div id="group-row" className="flex flex-col md:flex-row gap-5 uppercase">
