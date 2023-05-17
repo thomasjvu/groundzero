@@ -11,7 +11,7 @@ const CompaniesAll: React.FC = (): JSX.Element => {
         // console.log("companies", companies)
     }, [])
 
-    const fetchCompanies = async ()  => {
+    const fetchCompanies = async () => {
         const { data: { users }, error } = await supabase.auth.admin.listUsers()
 
         if (error) {
