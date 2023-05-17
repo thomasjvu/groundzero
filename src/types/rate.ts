@@ -1,10 +1,5 @@
-export interface Rate {
-    name: string;
-    value: string;
-}
+export type Rate = string
 
 export const rateList: Rate[] = [
-    { name: 'Annual', value: 'annual'},
-    { name: 'Hourly', value: 'hourly'},
-    { name: 'Weekly', value: 'weekly'},
+    'annual', 'hourly', 'weekly'
 ] 

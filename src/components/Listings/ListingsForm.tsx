@@ -12,6 +12,7 @@ import { settingList } from '../../types/setting';
 import { contractList } from '../../types/contract';
 import { levelList } from '../../types/level';
 import { rateList } from '../../types/rate';
+import { capitalizeFirstLetter } from '../../utils/helpers';
 
 const ListingsForm: React.FC = () => {
 
@@ -74,6 +75,8 @@ const ListingsForm: React.FC = () => {
         }
     }
 
+    
+
     return (
         <>
             {session && session.user.user_metadata.company === true && (
@@ -115,8 +118,8 @@ const ListingsForm: React.FC = () => {
                             required={true}>
                             <option value="">Select Category...</option>
                             {categoryList.map((cat) => (
-                                <option key={cat.value} value={cat.value}>
-                                    {cat.name}
+                                <option key={cat} value={cat}>
+                                    {capitalizeFirstLetter(cat)}
                                 </option>
                             ))}
                         </select>
@@ -130,8 +133,8 @@ const ListingsForm: React.FC = () => {
                             onChange={(e) => setListing({ ...listing, location: e.target.value })}>
                             <option value="">Select Location...</option>
                             {locationList.map((loc) => (
-                                <option key={loc.value} value={loc.value}>
-                                    {loc.name}
+                                <option key={loc} value={loc}>
+                                    {capitalizeFirstLetter(loc)}
                                 </option>
                             ))}
                         </select>
@@ -145,8 +148,8 @@ const ListingsForm: React.FC = () => {
                             onChange={(e) => setListing({ ...listing, contract: e.target.value })}>
                             <option value="">Select Contract...</option>
                             {contractList.map((contract) => (
-                                <option key={contract.value} value={contract.value}>
-                                    {contract.name}
+                                <option key={contract} value={contract}>
+                                    {capitalizeFirstLetter(contract)}
                                 </option>
                             ))}
                         </select>
@@ -160,8 +163,8 @@ const ListingsForm: React.FC = () => {
                             onChange={(e) => setListing({ ...listing, level: e.target.value })}>
                             <option value="">Select Level...</option>
                             {levelList.map((level) => (
-                                <option key={level.value} value={level.value}>
-                                    {level.name}
+                                <option key={level} value={level}>
+                                    {capitalizeFirstLetter(level)}
                                 </option>
                             ))}
                         </select>
@@ -175,8 +178,8 @@ const ListingsForm: React.FC = () => {
                             onChange={(e) => setListing({ ...listing, setting: e.target.value })}>
                             <option value="">Select Setting...</option>
                             {settingList.map((setting) => (
-                                <option key={setting.value} value={setting.value}>
-                                    {setting.name}
+                                <option key={setting} value={setting}>
+                                    {capitalizeFirstLetter(setting)}
                                 </option>
                             ))}
                         </select>
@@ -190,8 +193,8 @@ const ListingsForm: React.FC = () => {
                             onChange={(e) => setListing({ ...listing, rate: e.target.value })}>
                             <option value="">Select Rate...</option>
                             {rateList.map((rate) => (
-                                <option key={rate.value} value={rate.value}>
-                                    {rate.name}
+                                <option key={rate} value={rate}>
+                                    {capitalizeFirstLetter(rate)}
                                 </option>
                             ))}
                         </select>
