@@ -75,8 +75,6 @@ const ListingsForm: React.FC = () => {
         }
     }
 
-    
-
     return (
         <>
             {session && session.user.user_metadata.company === true && (

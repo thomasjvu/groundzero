@@ -15,9 +15,16 @@ const ListingDetails: React.FC = () => {
     }, []);
 
     async function fetchListing() {
-        const { data } = await supabase.from('listings').select().eq('id', id).single();
-        setListing(data);
-        console.log('Listing Data: ', data);
+        const { data, error } = await supabase.from('listings').select().eq('id', id).single();
+
+        if (error) {
+            console.error(error)
+        }
+
+        if (data) {
+            setListing(data);
+            console.log('Listing Data: ', data);
+        }
     }
 
     if (!listing) {
