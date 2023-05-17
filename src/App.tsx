@@ -4,8 +4,12 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Profile from './pages/Profile';
-import Listing from './pages/Listing';
 import Post from './pages/Post';
+
+import Companies from './pages/Companies';
+import Company from './pages/Company'; 
+
+import Listing from './pages/Listing';
 import Jobs from './pages/Jobs';
 
 import Terms from './pages/Legal/Terms';
@@ -22,6 +26,8 @@ const App: React.FC = (): JSX.Element => {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<About />} />
+                    <Route path="/companies" element={<Companies />} />
+                    <Route path="/companies/:id" element={<Company />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/post" element={<Post />} />
                     <Route path="/profile" element={<Profile />} />

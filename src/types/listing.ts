@@ -26,8 +26,18 @@ export interface Listing {
     tags?: string[];
 }
 
-export type ListingsInput = {
+export interface ListingsInput {
+    id?: string | undefined
     setListings: Dispatch<SetStateAction<Listing[]>>
     setIsLoading: Dispatch<SetStateAction<boolean>>
     setError: Dispatch<SetStateAction<string | null>>
+}
+
+export interface ListingsInputInfinite extends ListingsInput {
+    page: number
+    setHasMore: Dispatch<SetStateAction<boolean>>
+}
+
+export interface ListingCardProps {
+    listing: Partial<Listing>;
 }
