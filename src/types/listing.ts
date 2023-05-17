@@ -31,3 +31,7 @@ export type ListingsInput = {
     setIsLoading: Dispatch<SetStateAction<boolean>>
     setError: Dispatch<SetStateAction<string | null>>
 }
+
+export interface ListingCardProps {
+    listing: Partial<Listing>;
+}
