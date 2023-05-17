@@ -12,7 +12,7 @@ import { settingList } from '../../types/setting';
 import { contractList } from '../../types/contract';
 import { levelList } from '../../types/level';
 import { rateList } from '../../types/rate';
-import { capitalizeFirstLetter } from '../../utils/helpers';
+import { capitalizeFirstLetter } from '../../utils/stringUtils';
 
 const ListingsForm: React.FC = () => {
 
