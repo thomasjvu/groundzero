@@ -1,10 +1,6 @@
-// import { Link } from 'react-router-dom';
-import { useState, useEffect, SetStateAction } from 'react';
+import { useState, useEffect } from 'react';
 import { Listing } from '../../types/listing';
-// import { Icon } from '@iconify/react';
-// import { getRelativeTime } from '../../utils/time';
 import { fetchListings } from '../../helpers/fetchListings';
-import { Dispatch } from 'react';
 import ListingCard from './ListingCard';
 
 const ListingsLatest: React.FC = () => {
@@ -12,24 +8,9 @@ const ListingsLatest: React.FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
-    type ListingsInput = {
-        setListings: Dispatch<SetStateAction<Listing[]>>
-        setIsLoading: Dispatch<SetStateAction<boolean>>
-        setError: Dispatch<SetStateAction<string | null>>
-    }
-
-    // trigger a fetch when the component mounts
+    // trigger a fetch of listings when the component mounts
     useEffect(() => {
-        const listingsInput: ListingsInput = {
-            setListings,
-            setIsLoading,
-            setError
-        }
-        async function handleFetchListings(listingsInput: ListingsInput) {
-            await fetchListings(listingsInput)
-        }
-
-        handleFetchListings(listingsInput)
+        fetchListings({setListings, setIsLoading, setError})
     }, []);
 
     if (isLoading) {

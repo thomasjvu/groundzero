@@ -1,9 +1,13 @@
 import { supabase } from "../supabaseClient";
 import { Listing } from "../types/listing";
-import { ListingsInput } from "../types/listing";
+import { ListingsInputInfinite } from "../types/listing";
 
-export async function fetchListings({setListings, setIsLoading, setError}: Omit<ListingsInput, "id">): Promise<void> {
+export async function fetchCompanyListings({id, page, setListings, setIsLoading, setError, setHasMore}: ListingsInputInfinite): Promise<void> {
+
     try {
+
+        setIsLoading(true)
+
         const { data, error } = await supabase
             .from('listings')
             .select(
@@ -24,7 +28,8 @@ export async function fetchListings({setListings, setIsLoading, setError}: Omit<
                 `
             )
             .order('created_at', { ascending: false })
-            .range(0, 9);
+            .eq('company_id', id)
+            .range(page * 5, (page + 1) * 5 - 1)
         console.log('Fetched Data:', data);
 
         if (error) {
@@ -49,10 +54,21 @@ export async function fetchListings({setListings, setIsLoading, setError}: Omit<
                 profiles: item?.profiles
             })
             );
-            setListings(transformedData);
-            console.log('Listings Data: ', transformedData);
+
+            // Clear the listings state if it's the first page
+            if (page === 0) {
+                setListings(transformedData)
+            } else {
+                setListings((prevListings) => [...prevListings, ...transformedData]);
+            }
+
+            // console.log('Listings Data: ', transformedData); // check data
+
+            if (data.length < 5) {
+                setHasMore(false)
+            }
         }
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
         setError(error.message);
     } finally {
