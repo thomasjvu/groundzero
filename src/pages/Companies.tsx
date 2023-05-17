@@ -1,9 +1,12 @@
 import CompaniesAll from "../components/Companies/CompaniesAll"
+import Layout from "../layouts/Layout"
 
 const Companies = () => {
 
     return (
-        <CompaniesAll />
+        <Layout>
+            <CompaniesAll />
+        </Layout>
     )
 
 }

@@ -12,7 +12,10 @@ const Account: React.FC<{session: Session}> = ({ session }) => {
 // specify type of React FC props as an object with a single property `session` of type `Session`
     const [loading, setLoading] = useState(true);
     const [username, setUsername] = useState("");
+    const [description, setDescription] = useState("");
     const [website, setWebsite] = useState("");
+    const [linkedin, setLinkedin] = useState("");
+    const [twitter, setTwitter] = useState("");
     const [currency, setCurrency] = useState("");
     const [avatar_url, setAvatarUrl] = useState(null);
 
@@ -25,7 +28,7 @@ const Account: React.FC<{session: Session}> = ({ session }) => {
 
             let { data, error } = await supabase
                 .from('profiles')
-                .select(`username, website, avatar_url, currency`)
+                .select(`username, description, website, linkedin, twitter, avatar_url, currency`)
                 .eq(`id`, user.id)
                 .single();
 
@@ -33,7 +36,10 @@ const Account: React.FC<{session: Session}> = ({ session }) => {
                 console.warn(error);
             } else if (data) {
                 setUsername(data.username);
+                setDescription(data.description);
                 setWebsite(data.website);
+                setTwitter(data.twitter)
+                setLinkedin(data.linkedin)
                 setAvatarUrl(data.avatar_url);
                 setCurrency(data.currency);
             }
@@ -53,7 +59,10 @@ const Account: React.FC<{session: Session}> = ({ session }) => {
         const updates = {
             id: user.id,
             username,
+            description,
             website,
+            twitter,
+            linkedin,
             avatar_url,
             currency,
             updated_at: new Date()
@@ -104,6 +113,19 @@ const Account: React.FC<{session: Session}> = ({ session }) => {
                     />
                 </div>
                 <div className="form-group flex flex-col gap-2">
+                    <label htmlFor="description" className="">
+                       Description 
+                    </label>
+                    <input
+                        id="description"
+                        className="input-bordered input"
+                        type="text"
+                        required={true}
+                        value={description || ''}
+                        onChange={(e: any) => setDescription(e.target.value)}
+                    />
+                </div>
+                <div className="form-group flex flex-col gap-2">
                     <label htmlFor="website" className="">
                         Website
                     </label>
@@ -113,6 +135,30 @@ const Account: React.FC<{session: Session}> = ({ session }) => {
                         type="url"
                         value={website || ''}
                         onChange={(e: any) => setWebsite(e.target.value)}
+                    />
+                </div>
+                <div className="form-group flex flex-col gap-2">
+                    <label htmlFor="linkedin" className="">
+                        LinkedIn
+                    </label>
+                    <input
+                        id="linkedin"
+                        className="input-bordered input"
+                        type="url"
+                        value={linkedin || ''}
+                        onChange={(e: any) => setLinkedin(e.target.value)}
+                    />
+                </div>
+                <div className="form-group flex flex-col gap-2">
+                    <label htmlFor="website" className="">
+                        Twitter
+                    </label>
+                    <input
+                        id="twitter"
+                        className="input-bordered input"
+                        type="url"
+                        value={twitter || ''}
+                        onChange={(e: any) => setTwitter(e.target.value)}
                     />
                 </div>
                 <div className="form-group flex flex-col gap-2">
