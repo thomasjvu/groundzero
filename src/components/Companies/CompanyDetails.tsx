@@ -4,9 +4,9 @@ import { Profile } from '../../types/profile';
 import { Listing } from '../../types/listing';
 import ListingCard from '../Listings/ListingCard';
 
-import Website from '../Icons/Website';
-import Twitter from '../Icons/Twitter';
-import Linkedin from '../Icons/Linkedin';
+import IconWebsite from '../Icons/IconWebsite';
+import IconTwitter from '../Icons/IconTwitter';
+import IconLinkedin from '../Icons/IconLinkedin';
 
 import { fetchCompany } from '../../helpers/fetchCompany';
 import { fetchCompanyListings } from '../../helpers/fetchCompanyListings';
@@ -59,9 +59,9 @@ const CompanyDetails: React.FC = () => {
                 <h2 className="font-display text-4xl md:text-6xl">{company.username}</h2>
             </section>
             <section id="company-social-links" className="flex justify-end gap-5">
-                {company.twitter && <Twitter url={company.twitter} width={20} height={20} />}
-                {company.linkedin && <Linkedin url={company.linkedin} width={20} height={20} />}
-                {company.website && <Website url={company.website} width={20} height={20} />}
+                {company.twitter && <IconTwitter url={company.twitter} width={20} height={20} />}
+                {company.linkedin && <IconLinkedin url={company.linkedin} width={20} height={20} />}
+                {company.website && <IconWebsite url={company.website} width={20} height={20} />}
             </section>
             <section id="company-description" className="flex flex-col justify-start">
                 <h2 className="font-display text-2xl md:text-4xl">About</h2>

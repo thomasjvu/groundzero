@@ -1,10 +1,7 @@
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import React, { ReactNode } from 'react';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
+import { LayoutProps } from '../types/layout';
 
-type LayoutProps = {
-    children: ReactNode;
-};
 
 const Layout: React.FC<LayoutProps> = ({ children }): JSX.Element => {
     return (

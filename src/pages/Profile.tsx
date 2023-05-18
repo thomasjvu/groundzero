@@ -1,21 +1,10 @@
-import { useState, useEffect } from "react";
-import { supabase } from "../supabaseClient";
 import Layout from "../layouts/Layout";
-import Auth from "../components/Auth";
-import Account from "../components/Account"
-import { Session } from "@supabase/supabase-js";
+import Auth from "../components/Auth/Auth";
+import Account from "../components/Account/Account"
+import { handleSession } from "../helpers/handleSession";
 
 const Profile: React.FC = (): JSX.Element => {
-    const [session, setSession] = useState<Session | null>(null);
-
-    useEffect(() => {
-        supabase.auth.getSession().then(({ data: { session } }) => {
-            setSession(session);
-        });
-        supabase.auth.onAuthStateChange((_event, session) => {
-            setSession(session);
-        });
-    }, []);
+    const session = handleSession()
 
     return (
         <Layout>

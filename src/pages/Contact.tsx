@@ -1,6 +1,6 @@
 import Layout from '../layouts/Layout';
 import FormContact from '../components/Forms/FormContact';
-import SocialIcons from '../components/SocialIcons';
+import IconsGroup from '../components/Icons/IconsGroup';
 
 const Contact: React.FC = (): JSX.Element => {
     return (
@@ -22,7 +22,7 @@ const Contact: React.FC = (): JSX.Element => {
                     </section>
                     <section id="contact-social-group" className="flex flex-col gap-2">
                         <h3 className="font-display text-2xl">Social Media</h3>
-                        <SocialIcons />
+                        <IconsGroup />
                     </section>
                 </div>
             </div>

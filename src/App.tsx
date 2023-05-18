@@ -17,7 +17,7 @@ import Privacy from './pages/Legal/Privacy';
 import Disclaimers from './pages/Legal/Disclaimers';
 
 import NotFound from './pages/Error/NotFound';
-import ErrorBoundary from './components/ErrorBoundary';
+import ErrorBoundary from './components/Error/ErrorBoundary';
 
 const App: React.FC = (): JSX.Element => {
     return (

@@ -1,9 +1,5 @@
-import { ReactNode } from 'react';
 import Icon from '../assets/images/icon.png'
-
-type LayoutProps = {
-    children: ReactNode;
-};
+import { LayoutProps } from '../types/layout';
 
 const LayoutError: React.FC<LayoutProps> = ({ children }): JSX.Element => {
     return (

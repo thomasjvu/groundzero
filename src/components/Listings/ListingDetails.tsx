@@ -1,65 +1,47 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { supabase } from '../../supabaseClient';
 import { getFriendlyDate } from '../../utils/time.js';
-import { Icon } from '@iconify/react';
 import ButtonCopyUrl from '../Buttons/ButtonCopyUrl.tsx';
 import ButtonShareUrl from '../Buttons/ButtonShareUrl.tsx';
+import { fetchListing } from '../../helpers/fetchListing.ts';
+import { Listing } from '../../types/listing.ts';
+import { lineBreakContent } from '../../utils/stringUtils.ts';
 
-const ListingDetails: React.FC = () => {
+const ListingDetails: React.FC = (): JSX.Element => {
     const { id } = useParams<{ id: string }>();
-    const [listing, setListing] = useState<any>(null);
+    const [ listing, setListing ] = useState<Listing | null>(null);
 
     useEffect(() => {
-        fetchListing();
+        if (id) {
+            fetchListing(id)
+            .then((data) => setListing(data))
+            .catch((error) => console.error(error))
+        }
     }, []);
 
-    async function fetchListing() {
-        const { data, error } = await supabase.from('listings').select().eq('id', id).single();
-
-        if (error) {
-            console.error(error)
-        }
-
-        if (data) {
-            setListing(data);
-            console.log('Listing Data: ', data);
-        }
-    }
 
     if (!listing) {
         return <div>Loading...</div>;
     }
 
-    const contentWithLineBreaks = listing.content.replace(/\n/g, '<br>');
+    const contentWithLineBreaks = lineBreakContent(listing.content)
+
 
     return (
         <div id="listing-details" className="w-full flex flex-col gap-10">
-            <section className="flex w-full flex-col items-center justify-center font-mono">
+            <section className="flex w-full flex-col items-center justify-center font-mono gap-2">
                 <h1 className="text-4xl">{listing.title}</h1>
                 <div id="listing-details-primary" className="flex gap-5">
                     <span>{listing.contract}</span>
                     <span>{listing.location}</span>
                     <span>{listing.setting}</span>
                 </div>
-                <div id="listing-details-buttons" className="flex gap-5">
-                    <ButtonCopyUrl />
-                    <ButtonShareUrl />
-                    <div id="listing-details-button-group" className="btn flex items-center gap-2">
-                        <Icon icon="pixelarticons:section-copy" />
-                        <span>Save</span>
-                    </div>
-                    <div id="listing-details-button-group" className="btn flex items-center gap-2">
-                        <Icon icon="pixelarticons:section-copy" />
-                        <span>Share</span>
-                    </div>
-                    <div id="listing-details-button-group" className="btn flex items-center gap-2">
-                        <Icon icon="pixelarticons:section-copy" />
-                        <span>Report</span>
-                    </div>
-                </div>
                 <div id="listing-details-secondary" className="flex gap-5">
                     <span>{getFriendlyDate(listing.created_at)}</span>
+                </div>
+                <div id="listing-details-buttons" className="flex gap-5 justify-end items-end">
+                    <ButtonCopyUrl />
+                    <ButtonShareUrl />
                 </div>
             </section>
             <section id="listing-details-content" className="flex items-center justify-center">

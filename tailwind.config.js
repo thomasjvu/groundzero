@@ -40,9 +40,7 @@ export default {
                     "error": "#E58B8B",
                 }
             },
-            "dark",
             "light",
-            "garden",
             "cyberpunk",
         ]
     }

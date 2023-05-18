@@ -1,8 +1,7 @@
-import HeroOverlay from "../components/HeroOverlay";
+import HeroOverlay from "../components/Hero/HeroOverlay";
 
-import Card from "../components/Card";
+import Card from "../components/Cards/Card";
 import CardSlim from "../components/Cards/CardSlim";
-// import Stats from "../components/Stats";
 
 import Layout from "../layouts/Layout";
 
@@ -14,8 +13,6 @@ const Post: React.FC = (): JSX.Element => {
                     image="https://res.cloudinary.com/dlcz9y0nv/image/upload/v1683850603/gzo/aesthetic-sniper-girl_g5ejhq.png"
                     title="Find Your New Recruit"
                     text="Get your job noticed by talented professionals in the gaming industry"
-                    // primaryButtonText="Get a job"
-                    // secondaryButtonText="Stop being lazy"
                 />
                 <div id="cards-container" className="flex justify-center gap-20">
                     <Card

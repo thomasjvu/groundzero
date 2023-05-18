@@ -1,30 +1,19 @@
-import { useEffect, useState } from "react";
-import { supabase } from "../supabaseClient";
 import CyberpunkGirl from "../assets/images/aesthetic-cyberpunk-girl.png"
 import SniperGirl from "../assets/images/aesthetic-sniper-girl.png"
 
 import Layout from "../layouts/Layout";
-import DisplayCompanies from "../components/DisplayCompanies";
-import GlassCard from "../components/GlassCard";
-import HeroOverlay from "../components/HeroOverlay";
+import CompaniesDisplay from "../components/Companies/CompaniesDisplay";
+import CardGlass from "../components/Cards/CardGlass";
+import HeroOverlay from "../components/Hero/HeroOverlay";
 import ListingsLatest from "../components/Listings/ListingsLatest";
 import ListingsForm from "../components/Listings/ListingsForm";
-import SponsorsCardOverlay from "../components/Sponsors/SponsorsCardOverlay"
+import CardOverlay from "../components/Cards/CardOverlay";
 
-import { Session } from "@supabase/supabase-js";
+import { handleSession } from "../helpers/handleSession";
 
 const Home: React.FC = (): JSX.Element => {
-    const [session, setSession] = useState<Session | null>(null);
 
-    useEffect(() => {
-        supabase.auth.getSession().then(({ data: { session } }) => {
-            setSession(session);
-        });
-        supabase.auth.onAuthStateChange((_event, session) => {
-            setSession(session);
-        });
-        // console.log("Session", session)
-    }, []);
+    const session = handleSession()
 
     return (
         <Layout>
@@ -36,7 +25,7 @@ const Home: React.FC = (): JSX.Element => {
                     primaryButtonText="Hire Talent"
                     secondaryButtonText="Find a job"
                 />
-                <DisplayCompanies />
+                <CompaniesDisplay />
                 <div id="container-listings" className="grow-1 flex flex-col xl:flex-row gap-20 font-display text-3xl relative">
                     <section className="flex grow flex-col gap-5">
                         <h3 className="font-display text-3xl">Latest Opportunities</h3>
@@ -46,26 +35,26 @@ const Home: React.FC = (): JSX.Element => {
 
                     <div className="">
                         <div className="xl:sticky xl:top-28 flex flex-col gap-5 mt-8">
-                            {session && session.user.user_metadata.company === null ?
-                                <GlassCard
-                                    src={SniperGirl}
-                                    alt="Image of Video Game"
+                            {session && session.user.user_metadata.company ?
+                                <CardGlass
+                                    imageSrc={SniperGirl}
+                                    imageAlt="Image of Video Game"
                                     title="Post a Job"
-                                    text="Reach thousands of industry professionals and hire alongside the most famous brands in gaming and esports."
+                                    text="Reach thousands of gaming industry professionals here."
                                     buttonText="Get Started"
                                     buttonLink="/post"
                                 />
                                 :
-                                <GlassCard
-                                    src={SniperGirl}
-                                    alt="Image of Video Game"
+                                <CardGlass
+                                    imageSrc={SniperGirl}
+                                    imageAlt="Image of Video Game"
                                     title="Aim For Your Next Job"
                                     text="Search through our listings to find the job that suits you."
                                     buttonText="Get Started"
                                     buttonLink="/jobs"
                                 />
                             }
-                            <SponsorsCardOverlay 
+                            <CardOverlay 
                                 imageSrc="https://res.cloudinary.com/dlcz9y0nv/image/upload/v1684201052/gzo/gaming%20sponsors/Tears-of-the-Kingdom_cover_poe0gb.png"
                                 imageAlt="Cover Art of The Legend of Zelda: Tears of the Kingdom"
                                 text="Purchase from our sponsor"
