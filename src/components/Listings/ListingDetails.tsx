@@ -24,7 +24,11 @@ const ListingDetails: React.FC = (): JSX.Element => {
         return <div>Loading...</div>;
     }
 
-    const contentWithLineBreaks = lineBreakContent(listing.content)
+    let contentWithLineBreaks: string = ''
+
+    if (listing.content) {
+        contentWithLineBreaks = lineBreakContent(listing.content)
+    }
 
 
     return (
