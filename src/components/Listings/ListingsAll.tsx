@@ -42,6 +42,7 @@ const ListingsAll: React.FC = (): JSX.Element => {
                         salary_min: item.salary_min,
                         salary_max: item.salary_max,
                         contract: item.contract,
+                        link: item.link,
                         setting: item.setting
                     }));
                     setListings(transformedData);
@@ -70,6 +71,7 @@ const ListingsAll: React.FC = (): JSX.Element => {
                         salary_min: item.salary_min,
                         salary_max: item.salary_max,
                         contract: item.contract,
+                        link: item.link,
                         setting: item.setting
                     }));
                     setListings(transformedData);

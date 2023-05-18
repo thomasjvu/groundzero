@@ -25,6 +25,7 @@ export async function fetchCompanyListings({id, page, setListings, setIsLoading,
                     max_wage,
                     contract,
                     company_id,
+                    link,
                     profiles:profiles(id, username, avatar_url, website, currency)
                 `
             )
@@ -51,6 +52,7 @@ export async function fetchCompanyListings({id, page, setListings, setIsLoading,
                 min_wage: item.min_wage,
                 max_wage: item.max_wage,
                 contract: item.contract,
+                link: item.link,
                 company_id: item.company_id,
                 profiles: item?.profiles
             })

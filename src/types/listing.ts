@@ -23,6 +23,7 @@ export interface Listing {
     min_wage?: number;
     max_wage?: number;
     terms?: boolean;
+    link: string;
     profiles?: Profile | Profile[] | null;
     tags?: string[];
 }
