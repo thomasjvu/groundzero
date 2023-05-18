@@ -29,7 +29,7 @@ export const fetchListing = async (id: string): Promise<Listing | null> => {
             tags: data.tags
         };
 
-        console.log('Listing Data: ', listing);
+        // console.log('Listing Data: ', listing);
         return listing;
     }
 

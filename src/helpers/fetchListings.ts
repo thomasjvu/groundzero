@@ -26,7 +26,8 @@ export async function fetchListings({setListings, setIsLoading, setError}: Omit<
             )
             .order('created_at', { ascending: false })
             .range(0, 9);
-        console.log('Fetched Data:', data);
+
+            // console.log('Fetched Data:', data);
 
         if (error) {
             console.log(error);
@@ -52,7 +53,7 @@ export async function fetchListings({setListings, setIsLoading, setError}: Omit<
             })
             );
             setListings(transformedData);
-            console.log('Listings Data: ', transformedData);
+            // console.log('Listings Data: ', transformedData);
         }
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {

@@ -32,7 +32,8 @@ export async function fetchCompanyListings({id, page, setListings, setIsLoading,
             .order('created_at', { ascending: false })
             .eq('company_id', id)
             .range(page * 5, (page + 1) * 5 - 1)
-        console.log('Fetched Data:', data);
+
+        // console.log('Fetched Data:', data);
 
         if (error) {
             console.log(error);

@@ -19,6 +19,6 @@ export async function fetchCompany(id: string | undefined, setCompany: Function)
         }
 
         setCompany(profile as Profile);
-        console.log('Company Profile', profile);
+        // console.log('Company Profile', profile);
     }
 }

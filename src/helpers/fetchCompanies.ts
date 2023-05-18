@@ -24,7 +24,7 @@ export const fetchCompanies = async (): Promise<UpdatedCompany[]> => {
       .select('id, username, avatar_url, twitter, linkedin, website')
       .in('id', profileIds);
 
-    console.log('Profiles', profiles);
+    // console.log('Profiles', profiles);
 
     if (profilesError) {
       console.error('ProfilesError');
