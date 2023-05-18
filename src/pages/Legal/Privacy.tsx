@@ -4,7 +4,7 @@ const Privacy: React.FC = (): JSX.Element => {
     return (
         <Layout>
             <div id="privacy-policy-container" className="flex w-full justify-center">
-                <div className="flex w-1/2 flex-col gap-5">
+                <div className="flex w-full xl:w-1/2 flex-col gap-5">
                     <section>
                         <h1 className="text-center font-display text-4xl">Privacy Policy</h1>
                         <p className="font-mono">

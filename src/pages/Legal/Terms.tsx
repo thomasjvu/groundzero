@@ -4,7 +4,7 @@ const Terms: React.FC = (): JSX.Element => {
     return (
         <Layout>
             <div id="terms-of-use-container" className="flex w-full justify-center">
-                <div className="flex w-1/2 flex-col gap-5 text-justify">
+                <div className="flex w-full xl:w-1/2 flex-col gap-5 text-justify">
                     <section className="flex flex-col gap-2 font-mono">
                         <h1 className="text-center font-display text-4xl">Terms of Use</h1>
                         <p>

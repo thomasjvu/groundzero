@@ -49,7 +49,7 @@ const ListingDetails: React.FC = (): JSX.Element => {
                 </div>
             </section>
             <section id="listing-details-content" className="flex items-center justify-center">
-                <div className="w-2/4">
+                <div className="w-full xl:w-1/2">
                     <h2 className="font-display text-4xl uppercase">Job Description</h2>
                     <div className="font-mono" dangerouslySetInnerHTML={{__html: contentWithLineBreaks}}></div>
                     <a className='btn w-full' href={listing.link} target='_blank'>Apply</a>
