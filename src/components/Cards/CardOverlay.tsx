@@ -9,7 +9,7 @@ const CardOverlay: React.FC<CardWithImageProps> = ({
     buttonLink
 }): JSX.Element => {
     return (
-        <div className="card image-full w-96 bg-base-100 shadow-xl">
+        <div className="card image-full w-full xl:w-96 bg-base-100 shadow-xl">
             <figure>
                 <img src={imageSrc} alt={imageAlt} />
             </figure>
