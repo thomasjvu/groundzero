@@ -6,7 +6,6 @@ import CompaniesDisplay from "../components/Companies/CompaniesDisplay";
 import CardGlass from "../components/Cards/CardGlass";
 import HeroOverlay from "../components/Hero/HeroOverlay";
 import ListingsLatest from "../components/Listings/ListingsLatest";
-import ListingsForm from "../components/Listings/ListingsForm";
 import CardOverlay from "../components/Cards/CardOverlay";
 
 import { handleSession } from "../helpers/handleSession";
@@ -30,9 +29,7 @@ const Home: React.FC = (): JSX.Element => {
                     <section className="flex grow flex-col gap-5">
                         <h3 className="font-display text-3xl">Latest Opportunities</h3>
                         <ListingsLatest />
-                        <ListingsForm />
                     </section>
-
                     <div className="">
                         <div className="xl:sticky xl:top-28 flex flex-col gap-5 mt-8">
                             {session && session.user.user_metadata.company ?

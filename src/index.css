@@ -23,6 +23,6 @@ html {
     border-radius: 5px;
     font-family: 'Cascadia Code';
     background: white;
-    height: 100px;
+    min-height: 200px;
     color: black;
 }

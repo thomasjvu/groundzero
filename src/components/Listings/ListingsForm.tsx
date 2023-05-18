@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { supabase } from '../../supabaseClient';
-import { Session } from '@supabase/supabase-js';
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.bubble.css';
@@ -13,20 +12,11 @@ import { contractList } from '../../types/contract';
 import { levelList } from '../../types/level';
 import { rateList } from '../../types/rate';
 import { capitalizeFirstLetter } from '../../utils/stringUtils';
+import { handleSession } from '../../helpers/handleSession';
 
 const ListingsForm: React.FC = () => {
 
-    const [session, setSession] = useState<Session | null>(null);
-
-    useEffect(() => {
-        supabase.auth.getSession().then(({ data: { session } }) => {
-            setSession(session);
-        });
-        supabase.auth.onAuthStateChange((_event, session) => {
-            setSession(session);
-        });
-
-    }, []);
+    const session = handleSession()
 
     const [listing, setListing] = useState({
         title: '',
@@ -79,11 +69,12 @@ const ListingsForm: React.FC = () => {
         <>
             {session && session.user.user_metadata.company === true && (
                 <form
-                    className="new-listing-form flex flex-col gap-5"
+                    className="new-listing-form flex flex-col gap-5 font-mono"
                     onSubmit={(e) => {
                         e.preventDefault();
                         createListing();
                     }}>
+                    <h1 className='text-center font-display text-4xl'>New Listing</h1>
                     <div className="formGroup flex flex-col gap-2">
                         <label htmlFor="listing-title">Title</label>
                         <input

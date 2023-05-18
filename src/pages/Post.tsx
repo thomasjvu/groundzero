@@ -18,7 +18,7 @@ const Post: React.FC = (): JSX.Element => {
                     <Card
                         title="Single Job"
                         text="Fill in a short form and see your job go live in minutes."
-                        buttonLink="/post/job"
+                        buttonLink="/post/new"
                         buttonText="Get Started"
                         features={["Have your job on our busy jobs feed until the position is filled", "Receive applications wherever you like to keep your hiring activity streamlined", "Manage your job through our secure hiring dashboard and close it when you fill it"]}
                     />
