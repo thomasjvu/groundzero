@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 const Menu: React.FC<{ onClose: () => void }> = ({ onClose }): JSX.Element => {
     return (
         <div className="fixed top-0 left-0 h-screen w-screen bg-base-100 z-[999]">
-            <ul className="menu menu-vertical text-2xl flex flex-col items-center justify-center h-full">
+            <ul className="menu menu-vertical text-2xl flex flex-col items-center justify-center h-full font-mono">
                 <li>
                     <Link to="/jobs">Jobs</Link>
                 </li>
