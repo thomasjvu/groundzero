@@ -1,6 +1,6 @@
 import Card from "../Cards/Card"
 
-const Training: React.FC = (): JSX.Element => {
+const TrainingsList: React.FC = (): JSX.Element => {
 
     return (
         <div className="flex flex-col justify-center gap-5">
@@ -60,4 +60,4 @@ const Training: React.FC = (): JSX.Element => {
     )
 }
 
-export default Training
+export default TrainingsList
