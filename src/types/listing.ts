@@ -12,7 +12,7 @@ import { Profile } from "./profile";
 export interface Listing {
     id: string;
     title: string;
-    content: string;
+    content?: string;
     category?: Category;
     created_at: string;
     level?: Level;

@@ -15,6 +15,7 @@ export async function fetchCompanyListings({id, page, setListings, setIsLoading,
                     id,
                     title,
                     category,
+                    content,
                     created_at,
                     level,
                     location,
@@ -38,7 +39,7 @@ export async function fetchCompanyListings({id, page, setListings, setIsLoading,
         }
 
         if (data) {
-            const transformedData: Omit<Listing, "tags" | "terms">[] = data.map((item) => ({
+            const transformedData: Omit<Listing, "tags" | "terms" | "content">[] = data.map((item) => ({
                 id: item.id,
                 title: item.title,
                 category: item.category,
