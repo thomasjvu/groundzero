@@ -1,12 +1,13 @@
+import { Link } from 'react-router-dom';
 import { CardProps } from '../../types/card'
 
-const Card: React.FC<CardProps> = ({ title, text, buttonText, features }) => {
+const Card: React.FC<CardProps> = ({ title, text, buttonLink, buttonText, features }) => {
     return (
         <div className="card w-full bg-neutral text-neutral-content flex flex-col">
             <div className="p-10 flex flex-col justify-between gap-10">
                 <h3 className="card-title font-display text-4xl">{title}</h3>
                 <p className="font-mono italic">{text}</p>
-                <button className="btn bg-yellow-500 text-black font-mono w-full">{buttonText}</button>
+                <Link to={buttonLink} className="btn bg-yellow-500 text-black font-mono w-full">{buttonText}</Link>
                 <div className="card-features font-mono">
                     <ul className="flex flex-col gap-2">
                         {features.map((feature, index) => (

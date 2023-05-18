@@ -16,6 +16,8 @@ import Terms from './pages/Legal/Terms';
 import Privacy from './pages/Legal/Privacy';
 import Disclaimers from './pages/Legal/Disclaimers';
 
+import TrainingGrounds from './pages/TrainingGrounds';
+
 import NotFound from './pages/Error/NotFound';
 import ErrorBoundary from './components/Error/ErrorBoundary';
 
@@ -37,6 +39,8 @@ const App: React.FC = (): JSX.Element => {
                     <Route path="/disclaimers" element={<Disclaimers />} />
                     <Route path="/terms" element={<Terms />} />
 
+                    <Route path="/training" element={<TrainingGrounds />} />
+                    
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </Router>

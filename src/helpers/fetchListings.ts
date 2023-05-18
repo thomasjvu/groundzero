@@ -16,6 +16,7 @@ export async function fetchListings({setListings, setIsLoading, setError}: Omit<
                     location,
                     setting,
                     rate,
+                    link,
                     min_wage,
                     max_wage,
                     contract,
@@ -45,6 +46,7 @@ export async function fetchListings({setListings, setIsLoading, setError}: Omit<
                 min_wage: item.min_wage,
                 max_wage: item.max_wage,
                 contract: item.contract,
+                link: item.link,
                 company_id: item.company_id,
                 profiles: item?.profiles
             })

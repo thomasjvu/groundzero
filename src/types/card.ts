@@ -2,6 +2,7 @@ export interface CardProps {
     title: string;
     text: string;
     buttonText: string;
+    buttonLink: string;
     features: string[];
 }
 
