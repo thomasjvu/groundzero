@@ -13,19 +13,42 @@ const TrainingsUnity: React.FC = (): JSX.Element => {
 
     useEffect(() => {
         const updateBadges = async () => {
+            // When the user gets a perfect score, query that user's badges cell from the profiles table.
             if (score >= questionsUnity.length - 1) {
-                let { error } = await supabase
+                const { data, error } = await supabase
                     .from('profiles')
-                    .update({ badges: ['Unity Badge']})
+                    .select('badges')
                     .eq('id', session?.user.id)
-                if (!error) {
-                    console.log('Badge updated!')
+                    .single()
+
+                // Retrieve the User's Badges
+                if (error) {
+                    console.error('Error retrieving user badges:', error)
+                    return;
+                }
+
+                const badges = data?.badges || []
+
+                // Append Unity Badge if it isn't already in the user's badges array.
+                if (!badges.includes('Unity Badge')) {
+                    badges.push('Unity Badge')
+
+                    const { error: updateError } = await supabase
+                        .from('profiles')
+                        .update({ badges })
+                        .eq('id', session?.user.id)
+
+                    if (!updateError) {
+                        console.log('Badge updated!')
+                    } else {
+                        console.error('Error updating user badges:', updateError)
+                    }
                 }
             }
         }
 
         updateBadges()
-    }, [score, showResult]);
+    }, [showResult]);
 
     // check if option is correct, if so, add 1 to the score
     const handleUserAnswer = (selectedOption: string) => {
@@ -46,13 +69,15 @@ const TrainingsUnity: React.FC = (): JSX.Element => {
         <Layout>
             <div>
                 <h2 className="text-center font-display text-7xl">Unity Training</h2>
-                <div id="quiz-result" className="flex my-10 gap-5 w-full">
+                <div id="quiz" className="flex my-10 gap-5 w-full">
+                    {/* If there are no more questions, show the results */}
                     {showResult ? (
                         <div className="flex flex-col gap-5">
                             <h2 className="text-3xl uppercase font-bold font-mono">Score: {score} / {questionsUnity.length}</h2>
                             <p className="text-2xl uppercase font-mono"> { score > questionsUnity.length - 1 ? "Congrats! You have earned the 'Unity' badge. Please check your profile!" : "Yikes... Try again."}</p>
                         </div>
                     ) : (
+                        // If questions remain, show the next question
                         <div className="flex flex-col w-full gap-5">
                             <h2 className="font-mono uppercase text-accent">Question: {currentQuestion + 1}</h2>
                             <p className="font-mono text-2xl">{questionsUnity[currentQuestion].question}</p>
