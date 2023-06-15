@@ -10,8 +10,8 @@ const TrainingsList: React.FC = (): JSX.Element => {
                     <Card
                         title="Unity Training"
                         text="Take a Unity test, get a skills badge"
-                        buttonText="Coming Soon"
-                        buttonLink="/"
+                        buttonText="Earn Badge"
+                        buttonLink="/training/unity"
                         features={["Get a skills badge", "Impress Employers", "Profit"]}
                     />
                     <Card

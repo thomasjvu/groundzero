@@ -21,6 +21,7 @@ import Training from './pages/Training';
 import NotFound from './pages/Error/NotFound';
 import ErrorBoundary from './components/Error/ErrorBoundary';
 import PostListing from './pages/PostListing';
+import TrainingsUnity from './components/Trainings/TrainingsUnity';
 
 const App: React.FC = (): JSX.Element => {
     return (
@@ -42,6 +43,7 @@ const App: React.FC = (): JSX.Element => {
                     <Route path="/terms" element={<Terms />} />
 
                     <Route path="/training" element={<Training />} />
+                    <Route path="/training/unity" element={<TrainingsUnity />} />
                     
                     <Route path="*" element={<NotFound />} />
                 </Routes>

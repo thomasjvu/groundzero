@@ -53,7 +53,6 @@ const units: { [key: string]: number } = {
 // You probably want to change this to your own locale
 const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' })
 
-
 // Get relative time without libraries like moment.js or dayjs (ie '2 days ago')
 type RelativeTimeUnit = 'year' | 'month' | 'day' | 'hour' | 'minute' | 'second';
 
