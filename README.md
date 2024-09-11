@@ -5,15 +5,8 @@
 
 ## About
 
-In the Ground Zero application, users can either sign up as a job applicant or as a company. Company's have the ability to post their own job listings on the site, while users have the ability.
+In the Ground Zero application, users can either sign up as a job applicant or as a company. Company's have the ability to post their own job listings on the site, while users have the ability to apply for roles and take skills certifications.
 
 ## Technologies Used
 
 This application is made with TypeScript, React, and Supabase (Postgres), along with other packages such as React Quill for an enhanced writing experience.
-
-## Roadmap
-
-- [ ] Add images for badges
-- [ ] Implement post boosting
-- [ ] Update color schemes
-

@@ -43,7 +43,7 @@ const Account: React.FC<{ session: Session }> = ({ session }) => {
                 setLinkedin(data.linkedin);
                 setAvatarUrl(data.avatar_url);
                 setCurrency(data.currency);
-                setBadges(data.badges);
+                setBadges(data.badges || []); // Ensure badges is always an array
             }
 
             setLoading(false);
@@ -105,7 +105,7 @@ const Account: React.FC<{ session: Session }> = ({ session }) => {
                     </label>
                     <input
                         id="username"
-                        className="input-bordered input"
+                        className="input input-bordered"
                         type="text"
                         required={true}
                         value={username || ''}
@@ -118,9 +118,8 @@ const Account: React.FC<{ session: Session }> = ({ session }) => {
                     </label>
                     <input
                         id="description"
-                        className="input-bordered input"
+                        className="input input-bordered"
                         type="text"
-                        required={true}
                         value={description || ''}
                         onChange={(e: any) => setDescription(e.target.value)}
                     />
@@ -131,7 +130,7 @@ const Account: React.FC<{ session: Session }> = ({ session }) => {
                     </label>
                     <input
                         id="website"
-                        className="input-bordered input"
+                        className="input input-bordered"
                         type="url"
                         value={website || ''}
                         onChange={(e: any) => setWebsite(e.target.value)}
@@ -143,7 +142,7 @@ const Account: React.FC<{ session: Session }> = ({ session }) => {
                     </label>
                     <input
                         id="linkedin"
-                        className="input-bordered input"
+                        className="input input-bordered"
                         type="url"
                         value={linkedin || ''}
                         onChange={(e: any) => setLinkedin(e.target.value)}
@@ -155,7 +154,7 @@ const Account: React.FC<{ session: Session }> = ({ session }) => {
                     </label>
                     <input
                         id="twitter"
-                        className="input-bordered input"
+                        className="input input-bordered"
                         type="url"
                         value={twitter || ''}
                         onChange={(e: any) => setTwitter(e.target.value)}
@@ -167,7 +166,7 @@ const Account: React.FC<{ session: Session }> = ({ session }) => {
                     </label>
                     <select
                         id="currency"
-                        className="input-bordered input "
+                        className="input input-bordered "
                         value={currency || ''}
                         onChange={(e: any) => setCurrency(e.target.value)}>
                         <option value="">Select Currency...</option>
@@ -180,7 +179,7 @@ const Account: React.FC<{ session: Session }> = ({ session }) => {
                 </div>
                 {/* Authentication Containers */}
                 <div className="flex flex-col gap-5">
-                    <button className="btn-primary btn w-full" type="submit" disabled={loading}>
+                    <button className="btn btn-primary w-full" type="submit" disabled={loading}>
                         {loading ? 'Updating...' : 'Update'}
                     </button>
                     <ButtonSignout text="Sign Out" onClick={() => supabase.auth.signOut()} />
@@ -188,9 +187,11 @@ const Account: React.FC<{ session: Session }> = ({ session }) => {
                 {/* Badges Container */}
                 <div>
                     <h3 className="font-display text-2xl">Badges</h3>
-                    {badges.map((badge) => (
-                        <div key={badge}>{badge}</div>
-                    ))}
+                    {badges && badges.length > 0 ? (
+                        badges.map((badge, index) => <div key={index}>{badge}</div>)
+                    ) : (
+                        <p>No badges yet</p>
+                    )}
                 </div>
                 {/* Error Handling */}
                 <div id="message-container">
